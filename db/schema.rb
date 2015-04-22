@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422045124) do
+ActiveRecord::Schema.define(version: 20150422052244) do
 
   create_table "lines", force: :cascade do |t|
     t.string   "name"
-    t.string   "stop_id"
+    t.string   "line_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
