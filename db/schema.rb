@@ -21,9 +21,11 @@ ActiveRecord::Schema.define(version: 20150425104748) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "buses", ["edge_id"], name: "index_buses_on_edge_id"
+
   create_table "edges", force: :cascade do |t|
     t.string   "line_id"
-    t.integer  "index"
+    t.integer  "edge_index"
     t.string   "from"
     t.string   "to"
     t.integer  "time"
