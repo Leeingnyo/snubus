@@ -1,0 +1,9 @@
+<%= @results.each do |r| %>
+  <p>
+  노선:
+  <%= r[:line] %>
+  <br>
+  남은 시간:
+  <%= r[:time] %>
+  </p>
+<% end %>
