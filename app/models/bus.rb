@@ -12,7 +12,7 @@ class Bus < ActiveRecord::Base
   def self.coming_buses edge
     validate
 
-    where(:line_id => edge.line_id).where("index <= #{edge.index}").order(:index => :desc)
+    joins(:edge).where("edges.line_id = #{edge.line_id}").where("edge_index <= #{edge.edge_index}").order("edge_index DESC")
   end
 
   private
