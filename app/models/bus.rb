@@ -7,6 +7,12 @@ class Bus < ActiveRecord::Base
     update
   end
 
+  def self.coming_buses edge
+    validate
+
+    where(:line_id => edge.line_id).where("index <= #{edge.index}").order(:index => :desc)
+  end
+
   private
 
   UPDATE_CYCLE = 30
