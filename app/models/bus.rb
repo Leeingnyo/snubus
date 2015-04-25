@@ -1,4 +1,6 @@
 class Bus < ActiveRecord::Base
+  belongs_to :edge
+
   def self.validate
     if valid?
       return
