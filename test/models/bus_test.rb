@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class BusTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test '#coming_buses' do
+    e = Edge.find(2)
+    res = Bus.coming_buses(e)
+    assert_equal(res.fetch(0)["time"], 180)
+    assert_equal(res.fetch(1)["time"], 60)
+  end
 end
