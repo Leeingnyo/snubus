@@ -8,9 +8,12 @@
   </div>
   <div id="map">
     <img src="http://www.snu.ac.kr/about/images/ab0801_tab2_map.gif" alt="서울대학교 지도" width="100%">
-  <% @stops.each do |stop| %>
-    <button id="stop-<%= stop[:stop_id] %>" class="stops" value="<%= stop[:stop_id] %>" data-stop="<%= stop[:name] %>"></button>
-  <% end %>
+    <div id="stops-wrapper">
+    <% @stops.each do |stop| %>
+      <button id="stop-<%= stop[:stop_id] %>" class="stops" value="<%= stop[:stop_id] %>" data-stop="<%= stop[:name] %>"></button>
+    <% end %>
+    </div>
+    <div id="buses-wrapper"> </div>
   </div>
   <div id="stop-controller" class="hide">
     <div id="selected-stop">

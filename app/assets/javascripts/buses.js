@@ -54,4 +54,29 @@ $(function (){
     $("input[name=destination-name]").val($("#selected-stop-name").html());
     $("#stop-controller").hide();
   });
+  $.ajax({
+    url : '/AllBuses'
+    ,type : 'POST'
+    ,contentType  : 'application/json; charset=utf-8'
+    ,dataType : 'json'
+    ,success  : function(data){
+      console.log(data)
+      for (var key in data){
+        for (var bus_info of data[key]){
+          console.log()
+          var bus = $('<div class="buses">'+ key +'</div>');
+          console.log(bus_info.from);
+          rate = 1 - (bus_info.remaining_time / bus_info.edge_time);
+          $(bus).css("top", (stop_locations[bus_info.from].top
+            + (stop_locations[bus_info.to].top - stop_locations[bus_info.from].top) * rate) + "%")
+          $(bus).css("left", (stop_locations[bus_info.from].left
+            + (stop_locations[bus_info.to].left - stop_locations[bus_info.from].left) * rate) + "%");
+          $("#buses-wrapper").append(bus);
+        }
+      }
+    }
+    ,error  : function(request, status, error){
+      console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    }
+  })
 })
