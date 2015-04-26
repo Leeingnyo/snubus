@@ -1,7 +1,10 @@
-<h1>Routes#show_routes</h1>
-<p>Find me in app/views/routes/show_routes.html.erb</p>
+<h1>show routes</h1>
+
+<p>from: <%= @from %> <br>
+to: <%= @to %> <br></p>
 <% @routes.each do |route| %> 
-<p><%= route.from %> = <%= route.to %> <br>
+<p>
+line: <%= route.line.name %> <br>
 time : <%= route.moving %>
 </p> <% end %>
 
