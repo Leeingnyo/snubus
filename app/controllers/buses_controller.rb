@@ -1,7 +1,7 @@
 class BusesController < ApplicationController
   def index
     @lines = Line.all
-    @stops = Stops.all
+    @stops = Stop.all
   end
 
   def all_buses
