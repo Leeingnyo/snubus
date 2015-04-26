@@ -6,6 +6,7 @@
 #
 one:
 # column: value
+  id: 1
   line_id: "4551100"
   edge_index: 0
   from: "33712"
@@ -14,6 +15,7 @@ one:
 #
 two:
 #  column: value
+  id: 2
   line_id: "4551100"
   edge_index: 1
   from: "33749"

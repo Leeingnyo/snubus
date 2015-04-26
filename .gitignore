@@ -16,5 +16,8 @@
 !/log/.keep
 /tmp
 
+# simplcov coverage
+coverage/*
+
 # Ignore swap files.
 *.swp
