@@ -1,10 +1,12 @@
 <h1>show routes</h1>
 
-<p>from: <%= @from %> <br>
-to: <%= @to %> <br></p>
-<% @routes.each do |route| %> 
 <p>
-line: <%= route.line.name %> <br>
-time : <%= route.moving %>
-</p> <% end %>
-
+  from: <%= @from %> <br>
+  to: <%= @to %> <br>
+</p>
+<% @routes.each do |route| %> 
+  <p>
+    line: <%= route.line.name %> <br>
+    time : <%= route.moving %>
+  </p> 
+<% end %>
