@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=1200, height=540, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=0.2">
   <title>Snubus</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div id=wrapper>
+    <header>
+      <h1>SNUBUS</h1>
+    </header>
+    <%= yield %>
+  </div>
 </body>
 </html>
