@@ -5,14 +5,14 @@ class RoutesController < ApplicationController
       redirect_to :root
       return
     end
-    fromstop = Stop.find_by(:stop_id => params[:departure])
-    tostop = Stop.find_by(:stop_id => params[:destination])
-    if fromstop == nil || tostop == nil
+    from_stop = Stop.find_by(:stop_id => params[:departure])
+    to_stop = Stop.find_by(:stop_id => params[:destination])
+    if from_stop == nil || to_stop == nil
       redirect_to :root
       return
     end
-    @from = fromstop.name
-    @to = tostop.name
+    @from = from_stop.name
+    @to = to_stop.name
     @routes = [];
     lines.each do |line|
       time = Edge.get_duration(line[:line_id], params[:departure], params[:destination])
