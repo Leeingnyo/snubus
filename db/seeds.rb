@@ -34,8 +34,8 @@ Stop.create({:name => "서울대학교(하)", :stop_id => "3447"});
 =end
 
 #관악02
-e_02_0 = Edge.create({:line_id => "3920400", :edge_index => 0, :from => "33712", :to => "10135", :time => 360})
-e_02_1 = Edge.create({:line_id => "3920400", :edge_index => 1, :from => "10560", :to => "33712", :time => 360})
+Edge.create({:line_id => "3920400", :edge_index => 0, :from => "33712", :to => "10135", :time => 360})
+Edge.create({:line_id => "3920400", :edge_index => 1, :from => "10560", :to => "33712", :time => 360})
 
 #5511
 Edge.create({:line_id => "4551100", :edge_index => 0, :from => "33712", :to => "33749", :time => 180})
@@ -56,9 +56,3 @@ Edge.create({:line_id => "4551600", :edge_index => 2, :from => "33749", :to => "
 Edge.create({:line_id => "4551600", :edge_index => 3, :from => "34554", :to => "33352", :time => 240})
 Edge.create({:line_id => "4551600", :edge_index => 4, :from => "33352", :to => "33712", :time => 300})
 Edge.create({:line_id => "4551600", :edge_index => 5, :from => "33712", :to => "10455", :time => 240})
-
-# Dummy buses for test.
-Bus.create({:line_id => "3920400", :edge_id => e_02_0.id, :time => 60})
-Bus.create({:line_id => "3920400", :edge_id => e_02_0.id, :time => 120})
-Bus.create({:line_id => "3920400", :edge_id => e_02_1.id, :time => 60})
-Bus.create({:line_id => "3920400", :edge_id => e_02_1.id, :time => 120})
