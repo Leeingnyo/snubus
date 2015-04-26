@@ -1,7 +1,7 @@
 class RoutesController < ApplicationController
   def show_routes
     lines = Line.all
-    if params[:departure] == nil && params[:destination] == nil
+    if params[:departure] == nil || params[:destination] == nil
       redirect_to :root
       return
     end
