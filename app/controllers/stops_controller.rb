@@ -1,9 +1,8 @@
 class StopsController < ApplicationController
   def show
     @results = Array.new
-    stop = Stop.find_by :stop_id => params[:id]
-    @stop_name = stop.name
-    Edge.where(:to => stop.stop_id).find_each do |e|
+    @stop = Stop.find_by :stop_id => params[:id]
+    Edge.where(:to => @stop.stop_id).find_each do |e|
       coming = Bus.coming_buses(e)[0]
       if coming != nil
         pos = Edge.find coming["edge_id"]
