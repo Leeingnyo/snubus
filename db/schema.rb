@@ -11,11 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422052244) do
+ActiveRecord::Schema.define(version: 20150425104748) do
+
+  create_table "buses", force: :cascade do |t|
+    t.string   "line_id"
+    t.integer  "edge_id"
+    t.integer  "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "buses", ["edge_id"], name: "index_buses_on_edge_id"
+
+  create_table "edges", force: :cascade do |t|
+    t.string   "line_id"
+    t.integer  "edge_index"
+    t.string   "from"
+    t.string   "to"
+    t.integer  "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "lines", force: :cascade do |t|
     t.string   "name"
     t.string   "line_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stops", force: :cascade do |t|
+    t.string   "name"
+    t.string   "stop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
