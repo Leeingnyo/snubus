@@ -8,7 +8,7 @@ class StopsController < ApplicationController
         pos = Edge.find coming["edge_id"]
         time = Edge.get_duration(coming["line_id"], pos.to, e.to)
         time += coming["time"]
-        @results.push({:line => coming["line_id"], :time => time})
+        @results.push({:line => Line.find_by(:line_id => coming["line_id"]).name, :time => time})
       end
     end
   end
