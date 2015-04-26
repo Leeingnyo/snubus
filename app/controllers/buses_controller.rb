@@ -1,4 +1,9 @@
 class BusesController < ApplicationController
+  def index
+    @lines = Line.all
+    @stops = Stops.all
+  end
+
   def all_buses
     Bus.validate
     buses = Hash.new
