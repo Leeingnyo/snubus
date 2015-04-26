@@ -1,8 +1,16 @@
 class RoutesController < ApplicationController
   def show_routes
     lines = Line.all
-    @from = Stop.find_by(:stop_id => params[:departure]).name
-    @to = Stop.find_by(:stop_id => params[:destination]).name
+    if fromstop = Stop.find_by(:stop_id => params[:departure])
+      @from = fromstop.name
+    else
+      redirect_to :root
+    end
+    if tostop = Stop.find_by(:stop_id => params[:destination])
+      @to = tostop.name
+    else
+      redirect_to :root
+    end
     @routes = [];
     lines.each do |line|
       time = Edge.get_duration(line[:line_id], params[:departure], params[:destination])
