@@ -4,8 +4,8 @@ class Edge < ActiveRecord::Base
     iter_stop = start_stop
     edge = Edge.find_by(line_id: line, from: start_stop)
     while edge do
-      time += edge[:time]
-      iter_stop = edge[:end_stop_id]
+      time += edge.time
+      iter_stop = edge.to
       if iter_stop == end_stop
         return time
       end
