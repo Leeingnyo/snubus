@@ -1,0 +1,38 @@
+<main id="main">
+  <div id="lines-list">
+  <% @lines.each do |line| %>
+    <div>
+      <input id="line-<%= line[:name] %>" type="checkbox" value="<%= line[:name] %>" checked><label for="line-<%= line[:name] %>"><%= line[:name] %></label>
+    </div>
+  <% end %>
+  </div>
+  <div id="map">
+    <img src="http://www.snu.ac.kr/about/images/ab0801_tab2_map.gif" alt="서울대학교 지도" width="100%">
+    <div id="stops-wrapper">
+    <% @stops.each do |stop| %>
+      <button id="stop-<%= stop[:stop_id] %>" class="stops" value="<%= stop[:stop_id] %>" data-stop="<%= stop[:name] %>"></button>
+    <% end %>
+    </div>
+    <div id="buses-wrapper"> </div>
+  </div>
+  <div id="stop-controller" class="hide">
+    <div id="selected-stop">
+      <label>선택된 정류장</label>
+      <input id="selected-stop-id" class="hide" readonly>
+      <span id="selected-stop-name"></span>
+    </div>
+    <button id="show-stop-info">정류장 정보 보기</button>
+    <button id="set-departure">출발 정류장으로 지정</button>
+    <button id="set-destination">도착 정류장으로 지정</button>
+  </div>
+
+  <div>
+  </div>
+</main>
+<footer>
+  <form id="show-routes" action="/routes" method="get">
+    <label for="departure">출발</label><input name="departure-name" disabled><input name="departure" class="hide" readonly>
+    <label for="destination">도착</label><input name="destination-name" disabled><input name="destination" class="hide" readonly>
+    <button>검색</button>
+  </form>
+</footer>
