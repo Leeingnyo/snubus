@@ -64,7 +64,7 @@ $(function (){
       for (var key in data){
         for (var bus_info of data[key]){
           console.log()
-          var bus = $('<div class="buses">'+ key +'</div>');
+          var bus = $('<div class="buses '+ key +'">'+ key +'</div>');
           console.log(bus_info.from);
           rate = 1 - (bus_info.remaining_time / bus_info.edge_time);
           $(bus).css("top", (stop_locations[bus_info.from].top
@@ -78,5 +78,11 @@ $(function (){
     ,error  : function(request, status, error){
       console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
     }
+  })
+  $(".line-checked").change(function (){
+    if (this.checked)
+      $("." + $(this).val()).show();
+    else
+      $("." + $(this).val()).hide();
   })
 })
