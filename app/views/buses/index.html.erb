@@ -2,7 +2,7 @@
   <div id="lines-list">
   <% @lines.each do |line| %>
     <div>
-      <input id="line-<%= line[:name] %>" type="checkbox" value="<%= line[:name] %>" checked><label for="line-<%= line[:name] %>"><%= line[:name] %></label>
+      <input class="line-checked" id="line-<%= line[:name] %>" type="checkbox" value="<%= line[:name] %>" checked><label for="line-<%= line[:name] %>"><%= line[:name] %></label>
     </div>
   <% end %>
   </div>
