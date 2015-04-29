@@ -62,7 +62,7 @@ $(function (){
     ,success  : function(data){
       console.log(data)
       for (var key in data){
-        for (var bus_info of data[key]){
+        data[key].forEach(function (bus_info, index){
           console.log()
           var bus = $('<div class="buses '+ key +'">'+ key +'</div>');
           console.log(bus_info.from);
@@ -72,7 +72,7 @@ $(function (){
           $(bus).css("left", (stop_locations[bus_info.from].left
             + (stop_locations[bus_info.to].left - stop_locations[bus_info.from].left) * rate) + "%");
           $("#buses-wrapper").append(bus);
-        }
+        })
       }
     }
     ,error  : function(request, status, error){
