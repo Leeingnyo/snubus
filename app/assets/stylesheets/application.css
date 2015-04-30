@@ -39,4 +39,6 @@ header {
 }
 header h1 {
   margin: 0;
+  float: left;
+  cursor: pointer;
 }
