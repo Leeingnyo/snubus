@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(function (){
+  $("header h1").click(function (){
+    location.href = "/"
+  })
+})
