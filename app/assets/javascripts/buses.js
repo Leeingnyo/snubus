@@ -60,12 +60,9 @@ $(function (){
     ,contentType  : 'application/json; charset=utf-8'
     ,dataType : 'json'
     ,success  : function(data){
-      console.log(data)
       for (var key in data){
         data[key].forEach(function (bus_info, index){
-          console.log()
           var bus = $('<div class="buses '+ key +'">'+ key +'</div>');
-          console.log(bus_info.from);
           rate = 1 - (bus_info.remaining_time / bus_info.edge_time);
           $(bus).css("top", (stop_locations[bus_info.from].top
             + (stop_locations[bus_info.to].top - stop_locations[bus_info.from].top) * rate) + "%")
