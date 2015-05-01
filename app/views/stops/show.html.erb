@@ -2,16 +2,11 @@
   <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <% end %>
 
-<p>
-정류장: 
-<%= @stop.name %>
-</p>
-<%= @results.each do |r| %>
-  <p>
-  노선:
-  <%= r[:line] %>
-  <br>
-  남은 시간:
-  <%= r[:time] %>
-  </p>
+<h2><%= @stop.name %></h2>
+<% @results.each do |result| %>
+<div class="result">
+  <h3><%= result[:line] %></h3>
+  <p><%= result[:from] %> 에서 출발 <%= result[:left] > 0 ? "(%d개 전)" % result[:left].to_s : "(곧 도착합니다)" %></p>
+  <p>남은 시간: <%= (result[:time] / 60).to_s + '분' if result[:time] / 60 != 0 %> <%= result[:time] % 60 %>초</p>
+</div>
 <% end %>
