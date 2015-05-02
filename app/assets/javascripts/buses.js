@@ -19,6 +19,11 @@ $(function (){
     "3447": {"top": 92, "left": 17} //서울대학교(하)
   };
   $(".stops").each(function (){
+    if (!stop_locations[$(this).val()]) {
+      $(this).hide();
+      return;
+    }
+
     $(this).css("top", stop_locations[$(this).val()].top + "%");
     $(this).css("left", stop_locations[$(this).val()].left + "%");
   })
