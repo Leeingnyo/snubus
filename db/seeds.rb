@@ -17,11 +17,13 @@ sections.push({:line => "3920400", :stops => Array.new})
 sections.push({:line => "4551100", :stops => Array.new})
 sections.push({:line => "4551100", :stops => Array.new})
 sections.push({:line => "4551300", :stops => Array.new})
+sections.push({:line => "4551300", :stops => Array.new})
 sections.push({:line => "4551600", :stops => Array.new})
 sections.push({:line => "4551600", :stops => Array.new})
 
 # 관악02
 stops = sections[0][:stops]
+stops.push(Stop.create({:name => "기숙사구관", :stop_id => "10556"}));
 stops.push(Stop.create({:name => "기숙사삼거리", :stop_id => "10560"}));
 stops.push(Stop.create({:name => "공동기기원", :stop_id => "10452"}));
 stops.push(Stop.create({:name => "유전공학연구소.반도체공동연구소", :stop_id => "33356"}));
@@ -50,6 +52,7 @@ stops.push(Stop.create({:name => "서울대학교", :stop_id => "3447"}));
 
 # Coming 5511
 stops = sections[2][:stops]
+stops.push(Stop.create({:name => "서울여상.서울문영여중고앞", :stop_id => "3721"}));
 stops.push(Stop.create({:name => "서울대학교", :stop_id => "34554"}));
 stops.push(Stop.create({:name => "경영대", :stop_id => "33753"}));
 stops.push(Stop.create({:name => "수의대입구.보건대학원앞", :stop_id => "34741"}));
@@ -62,7 +65,7 @@ stops.push(Stop.create({:name => "신소재", :stop_id => "33354"}));
 stops.push(Stop.create({:name => "건설환경종합연구소앞", :stop_id => "36960"}));
 stops.push(Stop.create({:name => "제2공학관", :stop_id => "35864"}));
 
-# 5513
+# Going out 5513
 stops = sections[3][:stops]
 stops.push(Stop.create({:name => "제2공학관", :stop_id => "33712"}));
 stops.push(Stop.create({:name => "제1공학관", :stop_id => "33711"}));
@@ -73,6 +76,10 @@ stops.push(Stop.create({:name => "국제대학원", :stop_id => "33709"}));
 stops.push(Stop.create({:name => "수의대입구.보건대학원앞", :stop_id => "36591"}));
 stops.push(Stop.create({:name => "경영대", :stop_id => "33707"}));
 stops.push(Stop.create({:name => "서울대학교", :stop_id => "3447"}));
+
+# Coming 5513
+stops = sections[4][:stops]
+stops.push(Stop.create({:name => "서울여상.서울문영여중고앞", :stop_id => "3721"}));
 stops.push(Stop.create({:name => "서울대학교", :stop_id => "34554"}));
 stops.push(Stop.create({:name => "서울대정문", :stop_id => "3446"}));
 stops.push(Stop.create({:name => "법대입구", :stop_id => "33353"}));
@@ -84,7 +91,8 @@ stops.push(Stop.create({:name => "건설환경종합연구소앞", :stop_id => "
 stops.push(Stop.create({:name => "제2공학관", :stop_id => "35864"}));
 
 # Clockwise 5516
-stops = sections[4][:stops]
+stops = sections[5][:stops]
+stops.push(Stop.create({:name => "관악산입구.관악문화관도서관", :stop_id => "3448"}));
 stops.push(Stop.create({:name => "서울대학교", :stop_id => "34554"}));
 stops.push(Stop.create({:name => "서울대정문", :stop_id => "3446"}));
 stops.push(Stop.create({:name => "경영대", :stop_id => "33753"}));
@@ -102,7 +110,8 @@ stops.push(Stop.create({:name => "법대입구", :stop_id => "34043"}));
 stops.push(Stop.create({:name => "서울대정문", :stop_id => "34731"}));
 
 # Counterclockwise 5516
-stops = sections[5][:stops]
+stops = sections[6][:stops]
+stops.push(Stop.create({:name => "관악산입구.관악문화관도서관", :stop_id => "3448"}));
 stops.push(Stop.create({:name => "서울대학교", :stop_id => "34554"}));
 stops.push(Stop.create({:name => "서울대정문", :stop_id => "3446"}));
 stops.push(Stop.create({:name => "법대입구", :stop_id => "33353"}));
