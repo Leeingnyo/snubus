@@ -1,22 +1,28 @@
-# Lines
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+#
+# Examples:
+#
+#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+#   Mayor.create(name: 'Emanuel', city: cities.first)
+
 Line.create({:name => "관악02", :line_id => "3920400"});
 Line.create({:name => "5511", :line_id => "4551100"});
 Line.create({:name => "5513", :line_id => "4551300"});
 Line.create({:name => "5516", :line_id => "4551600"});
 
-# Stops
-Stop.create({:name => "기숙사삼거리", :stop_id => "21899"});
-Stop.create({:name => "공동기기원", :stop_id => "21288"});
-Stop.create({:name => "유전공학연구소.반도체공동연구소", :stop_id => "21289"});
-Stop.create({:name => "에너지자원연구소", :stop_id => "21290"});
-Stop.create({:name => "신소재", :stop_id => "21274"});
-Stop.create({:name => "제2파워플랜트", :stop_id => "21904"});
-Stop.create({:name => "건설환경종합연구소", :stop_id => "21905"});
-Stop.create({:name => "제2공학관", :stop_id => "21275"});
-Stop.create({:name => "제1공학관", :stop_id => "21516"});
-Stop.create({:name => "유전공학연구소.반도체공동연구소", :stop_id => "21277"});
-Stop.create({:name => "교수회관입구", :stop_id => "21278"});
-Stop.create({:name => "기숙사삼거리", :stop_id => "21554"});
+Stop.create({:name => "제 2 공학관(발)", :stop_id => "33712"});
+Stop.create({:name => "제 2 공학관(착)", :stop_id => "35864"});
+Stop.create({:name => "기숙사 삼거리(상)", :stop_id => "10560"});
+Stop.create({:name => "기숙사 삼거리(하)", :stop_id => "10135"});
+Stop.create({:name => "관악사 삼거리(상)", :stop_id => "10456"});
+Stop.create({:name => "관악사 삼거리(하)", :stop_id => "10455"});
+Stop.create({:name => "농생대 입구(상)", :stop_id => "33352"});
+Stop.create({:name => "농생대 입구(하)", :stop_id => "33749"});
+Stop.create({:name => "서울대학교 정문(상)", :stop_id => "3446"});
+Stop.create({:name => "서울대학교 정문(하)", :stop_id => "34731"});
+Stop.create({:name => "서울대학교(상)", :stop_id => "34554"});
+Stop.create({:name => "서울대학교(하)", :stop_id => "3447"});
 
 =begin
 제 2 공학관 33712(발) 35864(착)
