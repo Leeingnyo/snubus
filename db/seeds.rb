@@ -13,6 +13,7 @@ Line.create({:name => "5513", :line_id => "4551300"});
 Line.create({:name => "5516", :line_id => "4551600"});
 
 # Stops
+# 관악02
 Stop.create({:name => "기숙사삼거리", :stop_id => "21899"});
 Stop.create({:name => "공동기기원", :stop_id => "21288"});
 Stop.create({:name => "유전공학연구소.반도체공동연구소", :stop_id => "21289"});
@@ -25,6 +26,79 @@ Stop.create({:name => "제1공학관", :stop_id => "21516"});
 Stop.create({:name => "유전공학연구소.반도체공동연구소", :stop_id => "21277"});
 Stop.create({:name => "교수회관입구", :stop_id => "21278"});
 Stop.create({:name => "기숙사삼거리", :stop_id => "21554"});
+# 5511
+Stop.create({:name => "제2공학관", :stop_id => "21275"});
+Stop.create({:name => "제1공학관", :stop_id => "21276"});
+Stop.create({:name => "에너지자원연구소", :stop_id => "21290"});
+Stop.create({:name => "공대입구", :stop_id => "21292"});
+Stop.create({:name => "농생대", :stop_id => "21293"});
+Stop.create({:name => "자연대.행정관입구", :stop_id => "21294"});
+Stop.create({:name => "문화관입구", :stop_id => "21297"});
+Stop.create({:name => "법대입구", :stop_id => "21298"});
+Stop.create({:name => "서울대정문", :stop_id => "21299"});
+Stop.create({:name => "서울대학교", :stop_id => "21128"});
+Stop.create({:name => "서울대학교", :stop_id => "21127"});
+Stop.create({:name => "경영대", :stop_id => "21283"});
+Stop.create({:name => "수의대입구.보건대학원앞", :stop_id => "21284"});
+Stop.create({:name => "국제대학원", :stop_id => "21285"});
+Stop.create({:name => "관악사삼거리", :stop_id => "21286"});
+Stop.create({:name => "공동기기원", :stop_id => "21288"});
+Stop.create({:name => "유전공학연구소.반도체공동연구소", :stop_id => "21289"});
+Stop.create({:name => "에너지자원연구소", :stop_id => "21290"});
+Stop.create({:name => "신소재", :stop_id => "21274"});
+Stop.create({:name => "건설환경종합연구소앞", :stop_id => "21341"});
+Stop.create({:name => "제2공학관", :stop_id => "21340"});
+# 5513
+Stop.create({:name => "제2공학관", :stop_id => "21275"});
+Stop.create({:name => "제1공학관", :stop_id => "21276"});
+Stop.create({:name => "유전공학연구소.반도체공동연구소", :stop_id => "21277"});
+Stop.create({:name => "교수회관입구", :stop_id => "21278"});
+Stop.create({:name => "관악사삼거리", :stop_id => "21279"});
+Stop.create({:name => "국제대학원", :stop_id => "21280"});
+Stop.create({:name => "수의대입구.보건대학원앞", :stop_id => "21281"});
+Stop.create({:name => "경영대", :stop_id => "21282"});
+Stop.create({:name => "서울대학교", :stop_id => "21128"});
+Stop.create({:name => "서울대학교", :stop_id => "21127"});
+Stop.create({:name => "서울대정문", :stop_id => "21269"});
+Stop.create({:name => "법대입구", :stop_id => "21270"});
+Stop.create({:name => "자연대.행정관입구", :stop_id => "21271"});
+Stop.create({:name => "농생대", :stop_id => "21272"});
+Stop.create({:name => "공대입구", :stop_id => "21273"});
+Stop.create({:name => "신소재", :stop_id => "21274"});
+Stop.create({:name => "건설환경종합연구소앞", :stop_id => "21341"});
+Stop.create({:name => "제2공학관", :stop_id => "21340"});
+# 5516
+Stop.create({:name => "서울대학교", :stop_id => "21127"});
+Stop.create({:name => "서울대정문", :stop_id => "21269"});
+Stop.create({:name => "경영대", :stop_id => "21283"});
+Stop.create({:name => "수의대입구.보건대학원앞", :stop_id => "21284"});
+Stop.create({:name => "국제대학원", :stop_id => "21285"});
+Stop.create({:name => "관악사삼거리", :stop_id => "21286"});
+Stop.create({:name => "공동기기원", :stop_id => "21288"});
+Stop.create({:name => "유전공학연구소.반도체공동연구소", :stop_id => "21289"});
+Stop.create({:name => "에너지자원연구소", :stop_id => "21290"});
+Stop.create({:name => "공대입구", :stop_id => "21292"});
+Stop.create({:name => "농생대", :stop_id => "21293"});
+Stop.create({:name => "자연대.행정관입구", :stop_id => "21294"});
+Stop.create({:name => "서울대본부앞", :stop_id => "21295"});
+Stop.create({:name => "법대입구", :stop_id => "21298"});
+Stop.create({:name => "서울대정문", :stop_id => "21299"});
+Stop.create({:name => "서울대학교", :stop_id => "21127"});
+Stop.create({:name => "서울대정문", :stop_id => "21269"});
+Stop.create({:name => "법대입구", :stop_id => "21270"});
+Stop.create({:name => "자연대.행정관입구", :stop_id => "21271"});
+Stop.create({:name => "농생대", :stop_id => "21272"});
+Stop.create({:name => "공대입구", :stop_id => "21273"});
+Stop.create({:name => "신소재", :stop_id => "21274"});
+Stop.create({:name => "건설환경종합연구소앞", :stop_id => "21341"});
+Stop.create({:name => "제2공학관", :stop_id => "21275"});
+Stop.create({:name => "제1공학관", :stop_id => "21276"});
+Stop.create({:name => "유전공학연구소.반도체공동연구소", :stop_id => "21277"});
+Stop.create({:name => "교수회관입구", :stop_id => "21278"});
+Stop.create({:name => "관악사삼거리", :stop_id => "21279"});
+Stop.create({:name => "국제대학원", :stop_id => "21280"});
+Stop.create({:name => "수의대입구.보건대학원앞", :stop_id => "21281"});
+Stop.create({:name => "경영대", :stop_id => "21282"});
 
 =begin
 제 2 공학관 33712(발) 35864(착)
