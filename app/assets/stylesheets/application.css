@@ -35,10 +35,12 @@ header {
   top: 0;
   width: 100%;
   height: 50px;
+  text-align: center;
   background-color: gray;
 }
 header h1 {
+  display: inline;
   margin: 0;
-  float: left;
   cursor: pointer;
+  line-height: 50px;
 }
