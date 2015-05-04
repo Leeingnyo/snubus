@@ -63,6 +63,9 @@ $(function (){
     "33354": {"top": 30, "left": 81}, //신소재
     "36960": {"top": 14, "left": 93}, //건설환경종합연구소앞
     "35864": {"top": 8, "left": 90}, //제2공학관(착)
+
+    //5516 Clockwise
+    "32870": {"top": 59, "left": 44}, //
   };
   $(".stops").each(function (){
     if (!stop_locations[$(this).val()]) {
