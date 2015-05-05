@@ -24,9 +24,10 @@
   width: 30px;
   height: 30px;
   box-sizing: border-box;
-  border-radius: 25px;
-  border: 1px solid yellow;
-  background-color: orange;
+  border: 0;
+  background-color: transparent;
+  background-image: url('busstop.png');
+  background-size: 30px 30px;
   color: white;
   font-size: 10px;
   cursor: pointer;
