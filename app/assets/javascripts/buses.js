@@ -65,7 +65,7 @@ $(function (){
     "35864": {"top": 8, "left": 90}, //제2공학관(착)
 
     //5516 Clockwise
-    "32870": {"top": 59, "left": 44}, //
+    "32870": {"top": 59, "left": 44}, //서울대본부앞
   };
   $(".stops").each(function (){
     if (!stop_locations[$(this).val()]) {
