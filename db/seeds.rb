@@ -45,7 +45,7 @@ stops.push(Stop.create({:name => "에너지자원연구소", :stop_id => "34733"
 stops.push(Stop.create({:name => "공대입구", :stop_id => "33748"}));
 stops.push(Stop.create({:name => "농생대", :stop_id => "33749"}));
 stops.push(Stop.create({:name => "자연대.행정관입구", :stop_id => "33750"}));
-stops.push(Stop.create({:name => "문화관입구", :stop_id => 34732}));
+stops.push(Stop.create({:name => "문화관입구", :stop_id => "34732"}));
 stops.push(Stop.create({:name => "법대입구", :stop_id => "34043"}));
 stops.push(Stop.create({:name => "서울대정문", :stop_id => "34731"}));
 stops.push(Stop.create({:name => "서울대학교", :stop_id => "3447"}));
