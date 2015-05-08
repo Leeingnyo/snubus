@@ -1,7 +1,10 @@
 <h1>routes#last_routes</h1>
 <% 5.times do |i| %>
-  <p>
-    <input name="from<%= i %>" disabled>
-    <input name="to<%= i %>" disabled>
-  </p>
+  <form id="last-routes-<%= i %>" action="/routes" method="get">
+    <input name="departure-name" disabled>
+    <input name="departure" class="hide" readonly>
+    <input name="destination-name" disabled>
+    <input name="destination" class="hide" readonly>
+    <button type="submit">검색</button>
+  </form>
 <% end %>
