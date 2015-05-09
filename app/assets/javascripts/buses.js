@@ -136,4 +136,42 @@ $(function (){
     else
       $("." + $(this).val()).hide();
   })
+
+  $("#search").click(function() {
+    if (!($("input[name=departure]").val() &&
+          $("input[name=departure-name]").val() &&
+          $("input[name=destination]").val() &&
+          $("input[name=destination-name]").val()))
+      return;
+
+    lastRoutes = JSON.parse(localStorage.getItem("lastRoutes"));
+    if (!lastRoutes) {
+      lastRoutes = new Array
+    }
+
+    newRoute = {
+      from: {
+        id: $("input[name=departure]").val(),
+        name: $("input[name=departure-name]").val()
+      },
+      to: {
+        id: $("input[name=destination]").val(),
+        name: $("input[name=destination-name]").val()
+      }
+    };
+
+    for (i = 0; i < lastRoutes.length; ++i) {
+      if (lastRoutes[i].from.id == newRoute.from.id &&
+          lastRoutes[i].to.id == newRoute.to.id) {
+        lastRoutes.splice(i, 1);
+        break;
+      }
+    }
+
+    if (lastRoutes.push(newRoute) > 5) {
+      lastRoutes.shift();
+    }
+
+    localStorage.setItem("lastRoutes", JSON.stringify(lastRoutes));
+  });
 })

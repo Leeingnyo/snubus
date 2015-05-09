@@ -25,6 +25,9 @@ class RoutesController < ApplicationController
       end
     end
   end
+
+  def last_routes
+  end
 end
 
 class SubRoute

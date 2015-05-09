@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  root "buses#index"
-  post "/AllBuses" => "buses#all_buses"
+  root 'buses#index'
+  post '/AllBuses' => 'buses#all_buses'
   get '/stops/:id' => 'stops#show'
   get '/routes' => 'routes#show_routes'
+  get '/LastRoutes' => 'routes#last_routes'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
