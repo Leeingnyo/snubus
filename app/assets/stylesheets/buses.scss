@@ -86,6 +86,21 @@ footer {
   text-align: right;
   background-color: gray;
 }
+#show-last-routes {
+  float: right;
+}
+#show-last-routes button {
+  width: 100px;
+  height: 25px;
+  border: 1px solid black;
+  background: gray;
+  color: white;
+  cursor: pointer;
+}
+#show-routes {
+  float: right;
+  margin-right: 10px;
+}
 #show-routes input {
   width: 100px;
 }
