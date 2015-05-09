@@ -11,7 +11,7 @@
     <% 5.times do |i| %>
       <tr>
         <td colspan=3>
-          <form id="last-routes-<%= i %>" action="/routes" method="get">
+          <form class="last-route" action="/routes" method="get">
             <input name="departure-name" disabled>
             <input name="departure" class="hide" readonly>
             <input name="destination-name" disabled>

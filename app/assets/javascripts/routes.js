@@ -3,14 +3,18 @@ $(function() {
   if (!lastRoutes) {
     return;
   }
+  numRoutes = lastRoutes.length;
 
-  formIndex = 0;
-  for (i = lastRoutes.length - 1; i >= 0; --i) {
-    $("#last-routes-" + formIndex + " > input[name=departure-name]").val(lastRoutes[i].from.name);
-    $("#last-routes-" + formIndex + " > input[name=departure]").val(lastRoutes[i].from.id);
-    $("#last-routes-" + formIndex + " > input[name=destination-name]").val(lastRoutes[i].to.name);
-    $("#last-routes-" + formIndex + " > input[name=destination]").val(lastRoutes[i].to.id);
+  $(".last-route").each(function(formIndex) {
+    if (formIndex >= numRoutes) {
+      $(this).hide();
+      return;
+    }
 
-    formIndex++;
-  }
+    route = lastRoutes[numRoutes - formIndex - 1];
+    $(this).find("input[name=departure-name]").val(route.from.name);
+    $(this).find("input[name=departure]").val(route.from.id);
+    $(this).find("input[name=destination-name]").val(route.to.name);
+    $(this).find("input[name=destination]").val(route.to.id);
+  });
 })
