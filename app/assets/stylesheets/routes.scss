@@ -1,3 +1,26 @@
 // Place all the styles related to the routes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h2 {
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  text-align: center;
+  background-color: black;
+  color: white;
+}
+
+#last-routes {
+  width: 100%;
+}
+#last-routes th:nth-child(3) {
+  width: 20%;
+}
+#last-routes input {
+  width: 35%;
+}
+#last-routes button {
+  width: 20%;
+}
