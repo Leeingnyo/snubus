@@ -43,18 +43,18 @@ class Bus < ActiveRecord::Base
 
       if result.xpath("//headerMsg").first.to_s.include? "정상적으로 처리되었습니다"
 	#TODO: handle results
-	result = Nokogiri::XML(response)
-	items = result.xpath("//itemList")
-	items.each do |item|
-	  sectOrd = item.css("sectOrd").first.content.to_i - 1
-	  nextStTm = item.css("nextStTm").first.content.to_i / 2
-	  e = Edge.find_by(:line_id => id.to_s, :edge_index => sectOrd)
-	  if e
-	    eid = e.id
-	    bus = Bus.new({:line_id => id.to_s, :edge_id => eid, :time => nextStTm})
-	    bus.save
-	  end
-	end
+        result = Nokogiri::XML(response)
+        items = result.xpath("//itemList")
+        items.each do |item|
+          sectOrd = item.css("sectOrd").first.content.to_i - 1
+          nextStTm = item.css("nextStTm").first.content.to_i / 2
+          e = Edge.find_by(:line_id => id.to_s, :edge_index => sectOrd)
+          if e
+            eid = e.id
+            bus = Bus.new({:line_id => id.to_s, :edge_id => eid, :time => nextStTm})
+            bus.save
+          end
+        end
       else
         #TODO: FAIL TO GET RIGHT RESULT
       end
@@ -69,7 +69,7 @@ class Bus < ActiveRecord::Base
       req = Net::HTTP::Get.new uri
       req['serviceKey'] = 'QBa3t29yVh9iQwxdzTAcgWzNNPFUYCi/ca0hYcLZLVxktIl6ACG+zClU+NlTiZL2RYc5QW87O/rZJ3vtjk0Afw=='
       response = Net::HTTP.start(uri.host, uri.port) do |http|
-	http.request(req)
+        http.request(req)
       end
 
       return response.body
