@@ -155,7 +155,7 @@ stops.push(Stop.create({:name => "건설환경종합연구소앞", :stop_id => "
 stops.push(Stop.create({:name => "제2공학관", :stop_id => "35864"}));
 
 # 5516
-stops = sections[5][:stops]
+stops = sections[3][:stops]
 stops.push(Stop.create({:name => "신림2동차고지", :stop_id => "36316"}));
 stops.push(Stop.create({:name => "신림동고시촌입구", :stop_id => "3452"}));
 stops.push(Stop.create({:name => "서울산업정보학교.삼성교", :stop_id => "3450"}));
