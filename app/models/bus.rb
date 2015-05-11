@@ -42,7 +42,7 @@ class Bus < ActiveRecord::Base
       result = Nokogiri::XML(response)
 
       if result.xpath("//headerMsg").first.to_s.include? "정상적으로 처리되었습니다"
-	#TODO: handle results
+        #TODO: handle results
         result = Nokogiri::XML(response)
         items = result.xpath("//itemList")
         items.each do |item|
