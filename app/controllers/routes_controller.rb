@@ -14,14 +14,23 @@ class RoutesController < ApplicationController
     @from = from_stop.name
     @to = to_stop.name
     @routes = [];
-    lines.each do |line|
-      time = Edge.get_duration(line[:line_id], params[:departure], params[:destination])
-      if time > -1
-        r = SubRoute.new(
-          from = Stop.find_by(:stop_id => params[:departure]),
-          to = Stop.find_by(:stop_id => params[:destination]),
-          line = line, moving = time, waiting = 0)
-        @routes.push(r)
+    Edge.where(:from => from_stop).each do |from_edge|
+      Edge.where(:to => to_stop).each do |to_edge|
+        if from_edge[:line_id] == to_edge[:line_id]
+          time = Edge.get_duration(line[:line_id], params[:departure], params[:destination])
+          if time > -1
+            waiting_time = 0 #TODO: implement calculate waiting
+            r = SubRoute.new(
+              from = from_stop,
+              to = to_stop,
+              line = line, moving = time, waiting = waiting_time)
+            Route.new(
+              from = from_stop, to = to_stop, subroute = [r], time = time + waiting_time)
+            @routes.push(r)
+          end
+        else
+         #TODO: implement change line 
+        end
       end
     end
   end
@@ -36,7 +45,17 @@ class SubRoute
     @from = from
     @to = to
     @line = line
-    @moving = moving
-    @waiting = waiting
+    @moving = moving #moving time
+    @waiting = waiting #waiting time
+  end
+end
+
+class Route
+  attr_reader :from, :to, :subroutes, :time
+  def initialize(from, to, subroutes, time, waiting)
+    @from = from
+    @to = to
+    @soubroutes = subroutes
+    @time = time
   end
 end
