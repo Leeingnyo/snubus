@@ -46,11 +46,14 @@ class Bus < ActiveRecord::Base
 	result = Nokogiri::XML(response)
 	items = result.xpath("//itemList")
 	items.each do |item|
-	  sectOrd = item.css("sectOrd").first.content
+	  sectOrd = item.css("sectOrd").first.content.to_i - 1
 	  nextStTm = item.css("nextStTm").first.content.to_i / 2
-	  eid = Edge.find_by(:edge_index => sectOrd - 1).id
-	  bus = Bus.New({:line_id => id.to_s, :edge_id => eid, :time => nextStTm})
-	  bus.save
+	  e = Edge.find_by(:line_id => id.to_s, :edge_index => sectOrd)
+	  if e
+	    eid = e.id
+	    bus = Bus.new({:line_id => id.to_s, :edge_id => eid, :time => nextStTm})
+	    bus.save
+	  end
 	end
       else
         #TODO: FAIL TO GET RIGHT RESULT
@@ -60,7 +63,7 @@ class Bus < ActiveRecord::Base
     @@last_update_time = Time.now
   end
 
-  def get_pos_info(id)
+  def self.get_pos_info(id)
     if id.is_a? Integer
       uri = URI('http://ws.bus.go.kr/api/rest/buspos/getBusPosByRtid?busRouteId=' + id.to_s)
       req = Net::HTTP::Get.new uri
