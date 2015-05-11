@@ -28,6 +28,7 @@ class RoutesController < ApplicationController
             @routes.push(r)
           end
         else
+          one_change_routes = []
           edge = from_edge
           change_stop = Stop.find_by(:stop_id => edge.to)
           while edge do
@@ -37,10 +38,15 @@ class RoutesController < ApplicationController
               sr2 = find_subroute(to_edge.line_id, change_stop, to_stop)
               if sr1 && sr2
                 r = Route.new(from_stop, to_stop, [sr1, sr2], sr1.moving + sr1.waiting + sr2.moving + sr2.waiting)
-                @routes.push(r)
+                one_change_routes.push(r)
               end
             end
             edge = Edge.find_by(:line_id => edge.line_id, :edge_index => edge.edge_index + 1)
+          end
+
+          if not one_change_routes.empty?
+            one_change_routes.sort! { |a, b| a.time <=> b.time}
+            @routes.push(one_change_routes.first)
           end
         end
       end
