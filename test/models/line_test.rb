@@ -1,7 +1,12 @@
 require 'test_helper'
 
 class LineTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "Lines are available" do
+    seed
+
+    assert Line.find_by(:name => "관악02")
+    assert Line.find_by(:name => "5511")
+    assert Line.find_by(:name => "5513")
+    assert Line.find_by(:name => "5516")
+  end
 end

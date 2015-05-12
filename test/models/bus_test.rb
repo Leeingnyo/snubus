@@ -9,7 +9,7 @@ class BusTest < ActiveSupport::TestCase
       return
     end
 
-    assert_equal(res.fetch(0)["time"], 180)
+    assert_equal(res.fetch(0)["time"], 60)
     assert_equal(res.fetch(1)["time"], 60)
   end
 end
