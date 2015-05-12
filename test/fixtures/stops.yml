@@ -6,15 +6,15 @@
 #
 one:
 # column: value
-  name: "제2공학관(발)"
+  name: "제2공학관"
   stop_id: "33712"
 #
 two:
 #  column: value
-  name: "농생대 입구(하)"
+  name: "농생대"
   stop_id: "33749"
 #
 three:
 #  column: value
-  name: "서울대학교(하)"
+  name: "서울대학교"
   stop_id: "3447"
