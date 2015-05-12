@@ -2,7 +2,7 @@ require 'test_helper'
 
 class BusTest < ActiveSupport::TestCase
   test '#coming_buses' do
-    seed
+    add_buses
     e = Edge.find(2)
     res = Bus.coming_buses(e)
     
@@ -12,8 +12,6 @@ class BusTest < ActiveSupport::TestCase
   end
 
   test '#update' do
-    seed
-    Bus.destroy_all
     bus_before = Bus.first
     assert_not bus_before
     Rails.configuration.x.should_not_update_buses = false
