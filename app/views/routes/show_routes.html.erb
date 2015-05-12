@@ -4,9 +4,20 @@
   from: <%= @from %> <br>
   to: <%= @to %> <br>
 </p>
+<% i = 1 %>
 <% @routes.each do |route| %> 
-  <p>
-    line: <%= route.line.name %> <br>
-    time : <%= route.moving %>
-  </p> 
+  <div>
+  Route <%= i %><br>
+  time : <%= route.time %>
+  <% route.subroutes.each do |subroute| %>
+    <p>
+      line: <%= subroute.line.name %> <br>
+      from: <%= subroute.from.name %> <br>
+      to: <%= subroute.to.name %> <br>
+      waiting time : <%= subroute.waiting %> <br>
+      moving time : <%= subroute.moving %>
+    </p> 
+  <% end %>
+  <% i += 1 %>
+  </div>
 <% end %>
