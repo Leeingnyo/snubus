@@ -31,7 +31,6 @@ class Bus < ActiveRecord::Base
   end
 
   def self.update
-    #TODO: Remove all entries and add new entries.
     Bus.destroy_all
 
     @@line_id_list.each do |id|
@@ -42,12 +41,13 @@ class Bus < ActiveRecord::Base
       result = Nokogiri::XML(response)
 
       if result.xpath("//headerMsg").first.to_s.include? "정상적으로 처리되었습니다"
-        #TODO: handle results
         result = Nokogiri::XML(response)
         items = result.xpath("//itemList")
         items.each do |item|
           sectOrd = item.css("sectOrd").first.content.to_i - 1
-          nextStTm = item.css("nextStTm").first.content.to_i / 2
+          # TODO: Should get correct nextStTm.
+          #nextStTm = item.css("nextStTm").first.content.to_i / 2
+          nextStTm = 60
           e = Edge.find_by(:line_id => id.to_s, :edge_index => sectOrd)
           if e
             eid = e.id
