@@ -39,4 +39,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Do not update buses.
+  # Use static fixture data for testing.
+  config.x.should_not_update_buses = true
 end

@@ -31,6 +31,12 @@ class Bus < ActiveRecord::Base
   end
 
   def self.update
+    # Do not update buses.
+    # Use static fixture data for testing.
+    if Rails.configuration.x.should_not_update_buses == true
+      return
+    end
+
     Bus.destroy_all
 
     @@line_id_list.each do |id|
