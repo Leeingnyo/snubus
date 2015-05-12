@@ -16,11 +16,6 @@ class RoutesController < ApplicationController
     @routes = [];
     Edge.where(:from => from_stop.stop_id).each do |from_edge|
       Edge.where(:to => to_stop.stop_id).each do |to_edge|
-        print "\n"
-        print from_edge
-        print "\n"
-        print to_edge
-        print "\n"
         if from_edge.line_id == to_edge.line_id
           sr = find_subroute(from_edge.line_id, from_stop, to_stop)
           if sr
