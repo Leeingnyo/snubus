@@ -116,6 +116,9 @@ $(function (){
     ,success  : function(data){
       for (var key in data){
         data[key].forEach(function (bus_info, index){
+          if (!stop_locations[bus_info.from] || !stop_locations[bus_info.to]) {
+            return;
+          }
           var bus = $('<div class="buses '+ key +'">'+ key +'</div>');
           rate = 1 - (bus_info.remaining_time / bus_info.edge_time);
           $(bus).css("top", (stop_locations[bus_info.from].top
