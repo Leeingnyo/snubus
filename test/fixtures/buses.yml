@@ -4,8 +4,11 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+one:
+  line_id: "4551100"
+  edge_id: 1
+  time: 60
+two:
+  line_id: "4551100"
+  edge_id: 2
+  time: 180
