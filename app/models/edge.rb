@@ -1,5 +1,6 @@
 class Edge < ActiveRecord::Base
   def self.get_duration(line, start_stop, end_stop)
+    return 0 if start_stop == end_stop
     time = 0
     iter_stop = start_stop
     edge = Edge.find_by(:line_id => line, :from => start_stop)
