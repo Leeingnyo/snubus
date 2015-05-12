@@ -10,11 +10,6 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
-  def seed
-    Rails.application.load_seed
-    add_buses
-  end
-
   def add_buses
     Edge.all.each do |edge|
       new_bus = Bus.create({:line_id => edge.line_id, :edge => edge,
