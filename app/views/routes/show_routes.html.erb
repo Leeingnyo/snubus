@@ -1,23 +1,23 @@
-<h1>show routes</h1>
+<% content_for :head do %>
+  <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<% end %>
 
-<p>
-  from: <%= @from %> <br>
-  to: <%= @to %> <br>
-</p>
-<% i = 1 %>
-<% @routes.each do |route| %> 
-  <div>
-  Route <%= i %><br>
-  time : <%= route.time %>
+<h2>
+  from <%= @from %> <br>
+  to <%= @to %> <br>
+</h2>
+<% @routes.each_with_index do |route, index| %>
+  <div class="result">
+  <h3>Route <%= index + 1 %></h3>
+  <p>총 소요 시간 : <big><%= "#{(route.time / 60)} 분" if route.time / 60 != 0 %> <%= route.time % 60 %>초</big></p>
   <% route.subroutes.each do |subroute| %>
-    <p>
-      line: <%= subroute.line.name %> <br>
-      from: <%= subroute.from.name %> <br>
-      to: <%= subroute.to.name %> <br>
-      waiting time : <%= subroute.waiting %> <br>
-      moving time : <%= subroute.moving %>
-    </p> 
+    <div class="sub-result">
+      <h4><%= image_tag "busstop-small.png", :alt => "지도", :height => "20px" %> <span class="line-name"><%= subroute.line.name %></span></h4>
+      <p>from. <%= subroute.from.name %></p>
+      <p>to. <%= subroute.to.name %></p>
+      <p>대기시간: <big><%= "#{(subroute.waiting / 60)} 분" if subroute.waiting / 60 != 0 %> <%= subroute.waiting % 60 %>초</big></p>
+      <p>이동시간: <big><%= "#{(subroute.moving / 60)} 분" if subroute.moving / 60 != 0 %> <%= subroute.moving % 60 %>초</big></p>
+    </div>
   <% end %>
-  <% i += 1 %>
   </div>
 <% end %>
