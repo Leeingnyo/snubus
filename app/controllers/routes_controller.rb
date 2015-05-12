@@ -19,8 +19,9 @@ class RoutesController < ApplicationController
         if from_edge.line_id == to_edge.line_id
           sr = find_subroute(from_edge.line_id, from_stop, to_stop)
           if sr
-            r = Route.new(from = from_stop, to = to_stop, subroutes = [sr], time = sr.moving + sr.waiting)
-            @routes.push(r)
+            stops = Edge.get_stop_list(from_edge.line_id, from_stop.stop_id, to_stop.stop_id)
+            r = Route.new(from_stop, to_stop, [sr], stops, sr.moving + sr.waiting)
+            push_route_without_duplicated(@routes, r)
           end
         else
           one_change_routes = []
@@ -32,16 +33,17 @@ class RoutesController < ApplicationController
               sr1 = find_subroute(from_edge.line_id, from_stop, change_stop)
               sr2 = find_subroute(to_edge.line_id, change_stop, to_stop)
               if sr1 && sr2
-                r = Route.new(from_stop, to_stop, [sr1, sr2], sr1.moving + sr1.waiting + sr2.moving + sr2.waiting)
+                stops = Edge.get_stop_list(from_edge.line_id, from_stop.stop_id, edge.to)
+                stops += Edge.get_stop_list(to_edge.line_id, edge.to, to_stop.stop_id).drop(1)
+                r = Route.new(from_stop, to_stop, [sr1, sr2], stops, sr1.moving + sr1.waiting + sr2.moving + sr2.waiting)
                 one_change_routes.push(r)
               end
             end
             edge = Edge.find_by(:line_id => edge.line_id, :edge_index => edge.edge_index + 1)
           end
-
           if not one_change_routes.empty?
             one_change_routes.sort! { |a, b| a.time <=> b.time}
-            @routes.push(one_change_routes.first)
+            push_route_without_duplicated(@routes, one_change_routes.first)
           end
         end
       end
@@ -53,6 +55,17 @@ class RoutesController < ApplicationController
   end
 
   private
+  def push_route_without_duplicated(routes, route)
+    i = routes.index{|x| (x.stops <=> route.stops) == 0}
+    if i
+      if routes[i].time > route.time
+        routes.delete_at(i)
+        routes.push(route)
+      end
+    else
+      routes.push(route)
+    end
+  end
   def find_subroute(line, from_stop, to_stop)
     time = Edge.get_duration(line, from_stop.stop_id, to_stop.stop_id)
     if time > -1
@@ -98,11 +111,12 @@ class SubRoute
 end
 
 class Route
-  attr_reader :from, :to, :subroutes, :time
-  def initialize(from, to, subroutes, time)
+  attr_reader :from, :to, :subroutes, :stops, :time
+  def initialize(from, to, subroutes, stops, time)
     @from = from
     @to = to
     @subroutes = subroutes
+    @stops = stops
     @time = time
   end
 end
