@@ -16,15 +16,15 @@ class Edge < ActiveRecord::Base
   end
   
   def self.get_stop_list(line, start_stop, end_stop)
-    return 0 if start_stop == end_stop
+    return [start_stop] if start_stop == end_stop
     iter_stop = start_stop
-    l = [start_stop]
+    stop_list = [start_stop]
     edge = Edge.find_by(:line_id => line, :from => start_stop)
     while edge do
       iter_stop = edge.to
-      l.push(iter_stop)
+      stop_list.push(iter_stop)
       if iter_stop == end_stop
-        return l
+        return stop_list
       end
       edge = Edge.find_by(:line_id => line, :edge_index => edge.edge_index + 1)
     end
