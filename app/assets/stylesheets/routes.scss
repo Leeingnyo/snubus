@@ -12,6 +12,28 @@ h2 {
   color: white;
 }
 
+h3 {
+  margin: 0;
+}
+.result > p {
+  margin: 0.5em 0;
+}
+.sub-result {
+  padding: 5px;
+}
+h4 {
+  display: inline-block;
+  margin: 0.2em 0;
+  margin-left: 0.5em;
+  padding: 2px;
+}
+.line-name {
+  font-size: 20px;
+}
+.sub-result > p {
+  margin: 0.1em;
+}
+
 #last-routes {
   width: 100%;
 }
