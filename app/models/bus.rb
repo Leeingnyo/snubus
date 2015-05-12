@@ -33,7 +33,7 @@ class Bus < ActiveRecord::Base
   def self.update
     # Do not update buses.
     # Use static fixture data for testing.
-    if ENV["RAILS_ENV"] == "test"
+    if Rails.configuration.x.should_not_update_buses == true
       return
     end
 
