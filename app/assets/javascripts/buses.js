@@ -120,7 +120,7 @@ $(function (){
             return;
           }
           var bus = $('<div class="buses '+ key +'">'+ key +'</div>');
-          rate = 1 - (bus_info.remaining_time / bus_info.edge_time);
+          rate = Math.min(1, Math.max(0, 1 - (bus_info.remaining_time / bus_info.edge_time)));
           $(bus).css("top", (stop_locations[bus_info.from].top
             + (stop_locations[bus_info.to].top - stop_locations[bus_info.from].top) * rate) + "%")
           $(bus).css("left", (stop_locations[bus_info.from].left
