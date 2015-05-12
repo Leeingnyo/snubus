@@ -61,7 +61,7 @@ class RoutesController < ApplicationController
   def find_subroute(line, from_stop, to_stop)
     time = Edge.get_duration(line, from_stop.stop_id, to_stop.stop_id)
     if time > -1
-      waiting_time = 0 #TODO: implement calculate waiting
+      waiting_time = calculate_waiting_time(line, from_stop.stop_id, 0)
       return SubRoute.new(
         from_stop,
         to_stop,
@@ -70,6 +70,23 @@ class RoutesController < ApplicationController
         waiting_time)
     else
       return nil
+    end
+  end
+  
+  def calculate_waiting_time(line, stop, time_def)
+    e = Edge.find_by(:line_id => line, :to => stop)
+    if e
+      Bus.coming_buses(e).each do |coming|
+        pos = Edge.find coming["edge_id"]
+        time = coming.time + Edge.get_duration(line, pos.to, stop)
+        if time >= time_def
+          return time - time_def
+        end
+      end
+      first_edge = Edge.find_by(:line_id => line, :edge_index => 0)
+      return Edge.get_duration(line, first_edge.from, stop)
+    else
+      return 0
     end
   end
 end
