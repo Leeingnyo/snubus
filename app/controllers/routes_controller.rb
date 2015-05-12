@@ -26,9 +26,11 @@ class RoutesController < ApplicationController
         else
           one_change_routes = []
           edge = from_edge
-          change_stop = Stop.find_by(:stop_id => edge.to)
           while edge do
             edge2 = Edge.find_by(:line_id => to_edge.line_id, :from => edge.to)
+            change_stop = Stop.find_by(:stop_id => edge.to)
+            break if change_stop == to_stop
+
             if edge2 && edge2.edge_index <= to_edge.edge_index
               sr1 = find_subroute(from_edge.line_id, from_stop, change_stop)
               sr2 = find_subroute(to_edge.line_id, change_stop, to_stop)
