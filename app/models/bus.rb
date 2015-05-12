@@ -31,6 +31,12 @@ class Bus < ActiveRecord::Base
   end
 
   def self.update
+    # Do not update buses.
+    # Use static fixture data for testing.
+    if ENV["RAILS_ENV"] == "test"
+      return
+    end
+
     #TODO: Remove all entries and add new entries.
     Bus.destroy_all
 
