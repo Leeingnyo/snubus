@@ -12,6 +12,10 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
   def add_buses
     Edge.all.each do |edge|
+      if(edge.edge_index % 2 == 1)
+        next
+      end
+
       new_bus = Bus.create({:line_id => edge.line_id, :edge => edge,
                             :time => 60})
     end
