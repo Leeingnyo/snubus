@@ -8,4 +8,9 @@ class RoutesControllerTest < ActionController::TestCase
     get :show_routes, {:departure => 33712, :destination => 34400}
     assert_redirected_to :root
   end
+
+  test "#last_routes" do
+    get :last_routes
+    assert_response :success
+  end
 end
