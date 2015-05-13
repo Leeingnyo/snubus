@@ -37,11 +37,21 @@
 }
 .buses {
   position: absolute;
-  padding: 2px;
-  font-size: 14px;
+  padding: 1px 10px 7px 10px;
+  font-size: 12px;
+  font-weight: bold;
   border-radius: 4px;
-  background-color: #0f0;
   color: red;
+}
+.bus-right {
+  background-image: url('bus-right.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.bus-left {
+  background-image: url('bus-left.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 #stop-controller {

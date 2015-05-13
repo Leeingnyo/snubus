@@ -125,6 +125,10 @@ $(function (){
             + (stop_locations[bus_info.to].top - stop_locations[bus_info.from].top) * rate) + "%")
           $(bus).css("left", (stop_locations[bus_info.from].left
             + (stop_locations[bus_info.to].left - stop_locations[bus_info.from].left) * rate) + "%");
+          if (stop_locations[bus_info.from].left > stop_locations[bus_info.to].left)
+            $(bus).addClass("bus-left");
+          else
+            $(bus).addClass("bus-right");
           $("#buses-wrapper").append(bus);
         })
       }
