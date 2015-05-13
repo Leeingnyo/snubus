@@ -3,7 +3,7 @@ require 'test_helper'
 class BusTest < ActiveSupport::TestCase
   test '#coming_buses' do
     add_buses
-    e = Edge.find(2)
+    e = Edge.find(17)
     res = Bus.coming_buses(e)
     
     assert res
