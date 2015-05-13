@@ -7,9 +7,8 @@ class Edge < ActiveRecord::Base
     while edge do
       time += edge.time
       iter_stop = edge.to
-      if iter_stop == end_stop
-        return time
-      end
+      return time if iter_stop == end_stop
+      time = 0 if iter_stop == start_stop
       edge = Edge.find_by(:line_id => line, :edge_index => edge.edge_index + 1)
     end
     return -1
@@ -23,9 +22,8 @@ class Edge < ActiveRecord::Base
     while edge do
       iter_stop = edge.to
       stop_list.push(iter_stop)
-      if iter_stop == end_stop
-        return stop_list
-      end
+      return stop_list if iter_stop == end_stop
+      stop_list = [start_stop] if iter_stop == start_stop
       edge = Edge.find_by(:line_id => line, :edge_index => edge.edge_index + 1)
     end
     return nil
