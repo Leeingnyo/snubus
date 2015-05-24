@@ -17,7 +17,7 @@ class RoutesController < ApplicationController
     Edge.where(:from => from_stop.stop_id).each do |from_edge|
       Edge.where(:to => to_stop.stop_id).each do |to_edge|
         if from_edge.line_id == to_edge.line_id
-          sr = find_subroute(from_edge.line_id, from_stop, to_stop)
+          sr = find_subroute(from_edge.line_id, from_stop, to_stop, 0)
           if sr
             stops = Edge.get_stop_list(from_edge.line_id, from_stop.stop_id, to_stop.stop_id)
             r = Route.new(from_stop, to_stop, [sr], stops, sr.moving + sr.waiting)
@@ -32,8 +32,8 @@ class RoutesController < ApplicationController
             break if change_stop == to_stop
 
             if edge2 && edge2.edge_index <= to_edge.edge_index
-              sr1 = find_subroute(from_edge.line_id, from_stop, change_stop)
-              sr2 = find_subroute(to_edge.line_id, change_stop, to_stop)
+              sr1 = find_subroute(from_edge.line_id, from_stop, change_stop, 0)
+              sr2 = find_subroute(to_edge.line_id, change_stop, to_stop, sr1.moving + sr1.waiting)
               if sr1 && sr2
                 stops = Edge.get_stop_list(from_edge.line_id, from_stop.stop_id, edge.to)
                 stops += Edge.get_stop_list(to_edge.line_id, edge.to, to_stop.stop_id).drop(1)
@@ -68,10 +68,10 @@ class RoutesController < ApplicationController
       routes.push(route)
     end
   end
-  def find_subroute(line, from_stop, to_stop)
+  def find_subroute(line, from_stop, to_stop, time_start)
     time = Edge.get_duration(line, from_stop.stop_id, to_stop.stop_id)
     if time > -1
-      waiting_time = calculate_waiting_time(line, from_stop.stop_id, 0)
+      waiting_time = calculate_waiting_time(line, from_stop.stop_id, time_start)
       return SubRoute.new(
         from_stop,
         to_stop,
