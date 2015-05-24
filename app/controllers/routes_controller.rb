@@ -14,6 +14,10 @@ class RoutesController < ApplicationController
     @from = from_stop.name
     @to = to_stop.name
     @routes = [];
+    find_route(from_stop, to_stop)
+  end
+
+  def find_route(from_stop, to_stop)
     Edge.where(:from => from_stop.stop_id).each do |from_edge|
       Edge.where(:to => to_stop.stop_id).each do |to_edge|
         if from_edge.line_id == to_edge.line_id
