@@ -8,15 +8,15 @@
 </h2>
 <% @routes.each_with_index do |route, index| %>
   <div class="result">
-  <h3>Route <%= index + 1 %></h3>
-  <p>총 소요 시간 : <big><%= "#{(route.time / 60)} 분" if route.time / 60 != 0 %> <%= route.time % 60 %>초</big></p>
+    <h3>Route <%= index + 1 %></h3>
+    <p>총 소요 시간 : <big><%= min_and_sec(route.time) %></big></p>
   <% route.subroutes.each do |subroute| %>
     <div class="sub-result">
       <h4><%= image_tag "busstop-small.png", :alt => "지도", :height => "20px" %> <span class="line-name"><%= subroute.line.name %></span></h4>
       <p>from. <%= subroute.from.name %></p>
       <p>to. <%= subroute.to.name %></p>
-      <p>대기시간: <big><%= "#{(subroute.waiting / 60)} 분" if subroute.waiting / 60 != 0 %> <%= subroute.waiting % 60 %>초</big></p>
-      <p>이동시간: <big><%= "#{(subroute.moving / 60)} 분" if subroute.moving / 60 != 0 %> <%= subroute.moving % 60 %>초</big></p>
+      <p>대기시간: <big><%= min_and_sec(subroute.waiting) %></big></p>
+      <p>이동시간: <big><%= min_and_sec(subroute.moving) %></big></p>
     </div>
   <% end %>
   </div>

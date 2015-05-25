@@ -7,6 +7,6 @@
 <div class="result">
   <h3><%= result[:line] %></h3>
   <p><%= result[:from] %> 에서 출발<br><%= "(%d개 전 정류장에서 출발)" % (result[:left] + 1) %></p>
-  <p>남은 시간: <%= (result[:time] / 60).to_s + '분' if result[:time] / 60 != 0 %> <%= result[:time] % 60 %>초</p>
+  <p>남은 시간: <%= min_and_sec(result[:time]) %></p>
 </div>
 <% end %>
