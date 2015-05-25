@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 20150526110311) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "stations", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "kind"
+    t.integer  "arrival_time"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "direction"
+  end
+
   create_table "stops", force: :cascade do |t|
     t.string   "name"
     t.string   "stop_id"
