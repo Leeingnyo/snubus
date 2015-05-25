@@ -19,5 +19,12 @@
       <p>이동시간: <big><%= min_and_sec(subroute.moving) %></big></p>
     </div>
   <% end %>
+    <% if route.subway_to_sadang or route.subway_to_bongcheon %>
+    <div class="sub-result station">
+      <h4>지하철</h4>
+      <p>사당행 <%= hour_and_min(route.subway_to_sadang.arrival_time) %></p>
+      <p>봉천행 <%= hour_and_min(route.subway_to_bongcheon.arrival_time) %></p>
+    </div>
+    <% end %>
   </div>
 <% end %>

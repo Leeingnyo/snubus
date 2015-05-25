@@ -14,6 +14,18 @@ class RoutesController < ApplicationController
     @from = from_stop.name
     @to = to_stop.name
     @routes = find_route(from_stop, to_stop, 0)
+    if params[:destination] == "3719" || params[:destination] == "10422"
+      @routes.each do |route|
+        now = Time.now
+        arrive = now + route.time
+        today = Time.new(now.year, now.month, now.day)
+        time = (arrive - today) / 60
+        station_name = params[:destination] == "3719" ? "서울대입구역" : "낙성대역"
+        daytype = today.saturday? ? 1 : today.sunday? ? 2 : 0
+        route.subway_to_sadang = Station.where(:name => station_name, :direction => "사당", :kind => daytype).where("arrival_time > #{time}").order("arrival_time asc").first
+        route.subway_to_bongcheon = Station.where(:name => station_name, :direction => "봉천", :kind => daytype).where("arrival_time > #{time}").order("arrival_time asc").first
+      end
+    end
   end
 
   def find_route(from_stop, to_stop, time_start)
@@ -119,11 +131,14 @@ end
 
 class Route
   attr_reader :from, :to, :subroutes, :stops, :time
+  attr_accessor :subway_to_sadang, :subway_to_bongcheon
   def initialize(from, to, subroutes, stops, time)
     @from = from
     @to = to
     @subroutes = subroutes
     @stops = stops
     @time = time
+    @subway_to_sadang = nil
+    @subway_to_bongcheon = nil
   end
 end
