@@ -1,7 +1,3 @@
-Given /^I am on main page$/ do
-  visit("/")
-end
-
 When /^I click last search button$/ do
   click_button("last-routes-button")
 end
