@@ -100,7 +100,6 @@ footer {
   float: right;
 }
 #show-last-routes button {
-  width: 100px;
   height: 25px;
   border: 1px solid black;
   background: gray;
@@ -109,13 +108,15 @@ footer {
 }
 #show-routes {
   float: right;
+  max-width: 500px;
   margin-right: 10px;
 }
-#show-routes input {
-  width: 100px;
+@media screen and (max-device-width: 600px) {
+  #show-routes input {
+    width: 50px;
+  }
 }
 #show-routes button {
-  width: 100px;
   height: 25px;
   border: 1px solid black;
   background: gray;
