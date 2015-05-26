@@ -12,7 +12,7 @@
     <% estimated_time = Time.new + route.time %>
     <p>총 소요 시간 : <big><%= min_and_sec(route.time) %></big></p>
     <p>예상 도착 시간 : <big><%= estimated_time.hour %>시 <%= estimated_time.min %>분</big></p>
-  <% route.subroutes.each do |subroute| %>
+  <% route.subroutes.each_with_index do |subroute, index| %>
     <div class="sub-result">
       <h4><%= image_tag "busstop-small.png", :alt => "지도", :height => "20px" %> <span class="line-name"><%= subroute.line.name %></span></h4>
       <p>from. <%= subroute.from.name %></p>
@@ -20,10 +20,14 @@
       <p>대기시간: <big><%= min_and_sec(subroute.waiting) %></big></p>
       <p>이동시간: <big><%= min_and_sec(subroute.moving) %></big></p>
     </div>
+    <% if route.subroutes.length != index + 1 %>
+    <div class="joint"></div>
+    <% end %>
   <% end %>
     <% if route.subway_to_sadang or route.subway_to_bongcheon %>
+    <div class="joint"></div>
     <div class="sub-result station">
-      <h4>지하철</h4>
+      <h4><%= image_tag "subway.png", :alt => "Subway", :height => "20px" %> <span class="line-name">지하철</span></h4>
       <p>사당행 <%= hour_and_min(route.subway_to_sadang.arrival_time) %></p>
       <p>봉천행 <%= hour_and_min(route.subway_to_bongcheon.arrival_time) %></p>
     </div>
