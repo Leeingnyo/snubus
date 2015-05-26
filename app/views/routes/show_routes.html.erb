@@ -9,7 +9,9 @@
 <% @routes.each_with_index do |route, index| %>
   <div class="result">
     <h3>Route <%= index + 1 %></h3>
+    <% estimated_time = Time.new + route.time %>
     <p>총 소요 시간 : <big><%= min_and_sec(route.time) %></big></p>
+    <p>예상 도착 시간 : <big><%= estimated_time.hour %>시 <%= estimated_time.min %>분</big></p>
   <% route.subroutes.each do |subroute| %>
     <div class="sub-result">
       <h4><%= image_tag "busstop-small.png", :alt => "지도", :height => "20px" %> <span class="line-name"><%= subroute.line.name %></span></h4>
