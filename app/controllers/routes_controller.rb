@@ -23,7 +23,7 @@ class RoutesController < ApplicationController
       if route.to.stop_id == "3719" || route.to.stop_id == "10422"
         now = Time.now
         arrive = now + route.time
-        today = Time.new(now.year, now.month, now.day)
+        today = Time.new(arrive.year, arrive.month, arrive.day)
         time = (arrive - today) / 60
         station_name = route.to.stop_id == "3719" ? "서울대입구역" : "낙성대역"
         daytype = today.saturday? ? 1 : today.sunday? ? 2 : 0
