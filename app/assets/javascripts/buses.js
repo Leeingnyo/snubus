@@ -79,11 +79,11 @@ $(function (){
   $("#stop-controller").css("display")
   $("#map img").click(function (){
     $("#stop-controller").hide();
+    $("#stop-controller").removeClass("station");
   });
   $(".stops").click(function (){
     $("#selected-stop-id").val($(this).val());
     $("#selected-stop-name").html($(this).data("stop"));
-    $("header").outerHeight()
     /* 위치 지정 필요 */
     $("#stop-controller").css("top",
       parseInt($("header").outerHeight(true)) + parseInt($(this).css("top"))
@@ -93,6 +93,15 @@ $(function (){
       Math.min(910,
         Math.max(parseInt($("#map").css("margin-left")) + parseInt($(this).css("left")) - 115, 10) )
     );
+    $("#stop-controller").show();
+  });
+  $(".stations").click(function (){
+    $("#selected-stop-id").val($(this).val());
+    $("#selected-stop-name").html($(this).data("stop"));
+    $("#stop-controller").addClass("station");
+    $("#stop-controller").css("top", "auto");
+    $("#stop-controller").css("left", 10);
+    $("#stop-controller").css("bottom", $(this).index() * -30 + 70 + parseInt($("#stations-wrapper").css("bottom")));
     $("#stop-controller").show();
   });
   $("#show-stop-info").click(function (){

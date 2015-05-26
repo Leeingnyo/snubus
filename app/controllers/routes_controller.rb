@@ -13,7 +13,24 @@ class RoutesController < ApplicationController
 
     @from = from_stop.name
     @to = to_stop.name
-    @routes = find_route(from_stop, to_stop, 0)
+    if to_stop.property == "stop" or to_stop.property == nil
+      @routes = find_route(from_stop, to_stop, 0)
+    elsif
+      @routes = find_route(from_stop, Stop.find_by(:stop_id => "3719"), 0)
+      @routes += find_route(from_stop, Stop.find_by(:stop_id => "10422"), 0)
+    end
+    @routes.each do |route|
+      if route.to.stop_id == "3719" || route.to.stop_id == "10422"
+        now = Time.now
+        arrive = now + route.time
+        today = Time.new(arrive.year, arrive.month, arrive.day)
+        time = (arrive - today) / 60
+        station_name = route.to.stop_id == "3719" ? "서울대입구역" : "낙성대역"
+        daytype = today.saturday? ? 1 : today.sunday? ? 2 : 0
+        route.subway_to_sadang = Station.where(:name => station_name, :direction => "사당", :kind => daytype).where("arrival_time > #{time}").order("arrival_time asc").first
+        route.subway_to_bongcheon = Station.where(:name => station_name, :direction => "봉천", :kind => daytype).where("arrival_time > #{time}").order("arrival_time asc").first
+      end
+    end
   end
 
   def find_route(from_stop, to_stop, time_start)
@@ -119,11 +136,14 @@ end
 
 class Route
   attr_reader :from, :to, :subroutes, :stops, :time
+  attr_accessor :subway_to_sadang, :subway_to_bongcheon
   def initialize(from, to, subroutes, stops, time)
     @from = from
     @to = to
     @subroutes = subroutes
     @stops = stops
     @time = time
+    @subway_to_sadang = nil
+    @subway_to_bongcheon = nil
   end
 end
