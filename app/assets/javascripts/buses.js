@@ -101,7 +101,7 @@ $(function (){
     $("#stop-controller").addClass("station");
     $("#stop-controller").css("top", "auto");
     $("#stop-controller").css("left", 10);
-    $("#stop-controller").css("bottom", $(this).index() * -30 + 10 + parseInt($("#stations-wrapper").css("bottom")));
+    $("#stop-controller").css("bottom", $(this).index() * -30 + 70 + parseInt($("#stations-wrapper").css("bottom")));
     $("#stop-controller").show();
   });
   $("#show-stop-info").click(function (){
