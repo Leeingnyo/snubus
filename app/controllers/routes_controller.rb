@@ -13,19 +13,19 @@ class RoutesController < ApplicationController
 
     @from = from_stop.name
     @to = to_stop.name
-    @routes = [];
-    find_route(from_stop, to_stop)
+    @routes = find_route(from_stop, to_stop, 0)
   end
 
-  def find_route(from_stop, to_stop)
+  def find_route(from_stop, to_stop, time_start)
+    routes = []
     Edge.where(:from => from_stop.stop_id).each do |from_edge|
       Edge.where(:to => to_stop.stop_id).each do |to_edge|
         if from_edge.line_id == to_edge.line_id
-          sr = find_subroute(from_edge.line_id, from_stop, to_stop, 0)
+          sr = find_subroute(from_edge.line_id, from_stop, to_stop, time_start)
           if sr
             stops = Edge.get_stop_list(from_edge.line_id, from_stop.stop_id, to_stop.stop_id)
             r = Route.new(from_stop, to_stop, [sr], stops, sr.moving + sr.waiting)
-            push_route_without_duplicated(@routes, r)
+            push_route_without_duplicated(routes, r)
           end
         else
           one_change_routes = []
@@ -36,8 +36,8 @@ class RoutesController < ApplicationController
             break if change_stop == to_stop
 
             if edge2 && edge2.edge_index <= to_edge.edge_index
-              sr1 = find_subroute(from_edge.line_id, from_stop, change_stop, 0)
-              sr2 = find_subroute(to_edge.line_id, change_stop, to_stop, sr1.moving + sr1.waiting)
+              sr1 = find_subroute(from_edge.line_id, from_stop, change_stop, time_start)
+              sr2 = find_subroute(to_edge.line_id, change_stop, to_stop, time_start + sr1.moving + sr1.waiting)
               if sr1 && sr2
                 stops = Edge.get_stop_list(from_edge.line_id, from_stop.stop_id, edge.to)
                 stops += Edge.get_stop_list(to_edge.line_id, edge.to, to_stop.stop_id).drop(1)
@@ -49,12 +49,13 @@ class RoutesController < ApplicationController
           end
           if not one_change_routes.empty?
             one_change_routes.sort! { |a, b| a.time <=> b.time}
-            push_route_without_duplicated(@routes, one_change_routes.first)
+            push_route_without_duplicated(routes, one_change_routes.first)
           end
         end
       end
     end
-    @routes.sort! { |a, b| a.time <=> b.time}
+    routes.sort! { |a, b| a.time <=> b.time}
+    return routes
   end
 
   def last_routes
