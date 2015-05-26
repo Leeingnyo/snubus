@@ -257,6 +257,10 @@ while i < sections.length
 end
 
 # Create Stations.
+Stop.create({:name => "사당방면", :stop_id => "10", :property => "station"})
+Stop.create({:name => "신림방면", :stop_id => "11", :property => "station"})
+
+# Create Timetables.
 Station.create(:name => "낙성대역", :kind => 0, :arrival_time => 365, :direction => "봉천")
 Station.create(:name => "낙성대역", :kind => 0, :arrival_time => 375, :direction => "봉천")
 Station.create(:name => "낙성대역", :kind => 0, :arrival_time => 382, :direction => "봉천")
