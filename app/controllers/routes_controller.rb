@@ -14,8 +14,8 @@ class RoutesController < ApplicationController
     @from = from_stop.name
     @to = to_stop.name
     @routes = find_route(from_stop, to_stop, 0)
-    if params[:destination] == "3719" || params[:destination] == "10422"
-      @routes.each do |route|
+    @routes.each do |route|
+      if route.to.stop_id == "3719" || route.to.stop_id == "10422"
         now = Time.now
         arrive = now + route.time
         today = Time.new(now.year, now.month, now.day)
