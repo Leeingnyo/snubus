@@ -13,7 +13,7 @@ class RoutesController < ApplicationController
 
     @from = from_stop.name
     @to = to_stop.name
-    if to_stop.property == "stop"
+    if to_stop.property == "stop" or to_stop.property == nil
       @routes = find_route(from_stop, to_stop, 0)
     elsif
       @routes = find_route(from_stop, Stop.find_by(:stop_id => "3719"), 0)
