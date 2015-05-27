@@ -18,7 +18,7 @@ class RoutesController < ApplicationController
     to_stop_list = Array.new
     if departure.property == "spot"
       Edge.where(:line_id => "walk", :from => departure.stop_id).each do |edge|
-        from_stop_list.push(Stop.find_by(:stop_id => edge.to_stop))
+        from_stop_list.push(Stop.find_by(:stop_id => edge.to))
       end
     else
       from_stop_list.push(departure)
@@ -26,7 +26,7 @@ class RoutesController < ApplicationController
 
     if destination.property == "spot"
       Edge.where(:line_id => "walk", :to => destination.stop_id).each do |edge|
-        to_stop_list.push(Stop.find_by(:stop_id => edge.from_stop))
+        to_stop_list.push(Stop.find_by(:stop_id => edge.from))
       end
     elsif destination.property == "station"
       to_stop_list.push(Stop.find_by(:stop_id => "3719"))
@@ -176,8 +176,7 @@ class SubRoute
 end
 
 class Route
-  attr_reader :from, :to, :subroutes, :stops, :time
-  attr_accessor :subway_to_sadang, :subway_to_bongcheon
+  attr_accessor :from, :to, :subroutes, :stops, :time, :subway_to_sadang, :subway_to_bongcheon
   def initialize(from, to, subroutes, stops, time)
     @from = from
     @to = to
