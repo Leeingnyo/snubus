@@ -3008,3 +3008,10 @@ Station.create(:name => "서울대입구역", :kind => 1, :arrival_time => 1390,
 Station.create(:name => "서울대입구역", :kind => 1, :arrival_time => 1396, :direction => "사당")
 Station.create(:name => "서울대입구역", :kind => 1, :arrival_time => 1404, :direction => "사당")
 Station.create(:name => "서울대입구역", :kind => 1, :arrival_time => 1421, :direction => "사당")
+
+Line.create({:name => "도보", :line_id => "walk"});
+Stop.create({:name => "학생회관", :stop_id => "1000000", :property => "spot"});
+Edge.create({:line_id => "walk", :edge_index => 0, :from => "33750", :to => "1000000", :time => 80});
+Edge.create({:line_id => "walk", :edge_index => 1, :from => "34552", :to => "1000000", :time => 70});
+Edge.create({:line_id => "walk", :edge_index => 0, :from => "1000000", :to => "33750", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => 1, :from => "1000000", :to => "34552", :time => 50});

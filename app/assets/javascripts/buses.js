@@ -66,6 +66,9 @@ $(function (){
 
     //5516 Clockwise
     "32870": {"top": 59, "left": 44}, //서울대본부앞
+
+    //Spot
+    "1000000": {"top": 50, "left": 51},
   };
   $(".stops").each(function (){
     if (!stop_locations[$(this).val()]) {
@@ -80,10 +83,12 @@ $(function (){
   $("#map img").click(function (){
     $("#stop-controller").hide();
     $("#stop-controller").removeClass("station");
+    $("#stop-controller").removeClass("spot");
   });
   $(".stops").click(function (){
     $("#selected-stop-id").val($(this).val());
     $("#selected-stop-name").html($(this).data("stop"));
+    $("#stop-controller").removeClass("spot");
     /* 위치 지정 필요 */
     $("#stop-controller").css("top",
       parseInt($("header").outerHeight(true)) + parseInt($(this).css("top"))
@@ -98,21 +103,27 @@ $(function (){
   $(".stations").click(function (){
     $("#selected-stop-id").val($(this).val());
     $("#selected-stop-name").html($(this).data("stop"));
+    $("#stop-controller").removeClass("spot");
     $("#stop-controller").addClass("station");
     $("#stop-controller").css("top", "auto");
     $("#stop-controller").css("left", 10);
     $("#stop-controller").css("bottom", $(this).index() * -30 + 70 + parseInt($("#stations-wrapper").css("bottom")));
     $("#stop-controller").show();
   });
+  $(".spots").click(function (){
+    $("#selected-stop-id").val($(this).val());
+    $("#selected-stop-name").html($(this).data("stop"));
+    $("#stop-controller").addClass("spot");
+  });
   $("#show-stop-info").click(function (){
     location.href = "/stops/" + $("#selected-stop-id").val();
   });
-  $("#set-departure").click(function (){
+  $(".set-departure").click(function (){
     $("input[name=departure]").val($("#selected-stop-id").val());
     $("input[name=departure-name]").val($("#selected-stop-name").html());
     $("#stop-controller").hide();
   });
-  $("#set-destination").click(function (){
+  $(".set-destination").click(function (){
     $("input[name=destination]").val($("#selected-stop-id").val());
     $("input[name=destination-name]").val($("#selected-stop-name").html());
     $("#stop-controller").hide();

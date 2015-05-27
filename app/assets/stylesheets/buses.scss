@@ -32,6 +32,11 @@
   font-size: 10px;
   cursor: pointer;
 }
+#map button.spots {
+  background: pink;
+  border: 2px solid orange;
+  border-radius: 15px;
+}
 #map #stations-wrapper {
   position: fixed;
   bottom: 50px;
@@ -74,18 +79,20 @@
   position: absolute;
   max-width: 270px;
   height: 80px;
-  margin-bottom: 60px;
   border: 5px solid black;
   border-radius: 10px;
   background-color: gray;
   overflow: hidden;
+}
+#stop-controller .for-spot {
+  display: none;
 }
 #stop-controller #selected-stop {
   height: 20px;
   padding: 3px 5px;
   text-align: center;
 }
-#stop-controller button {
+#stop-controller .for-stop button {
   float: left;
   max-width: 100px;
   width: calc(100% / 3);
@@ -99,9 +106,32 @@
   font-size: 13px;
   cursor: pointer;
 }
+#stop-controller .for-spot button {
+  float: left;
+  max-width: 100px;
+  width: calc(100% / 2);
+  height: 60px;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 0;
+  background-color: black;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+}
 .station#stop-controller {
   position: fixed;
   left: 10px;
+}
+.spot#stop-controller label.for-spot {
+  display: inline;
+}
+.spot#stop-controller .for-spot {
+  display: block;
+}
+.spot#stop-controller .for-stop {
+  display: none;
 }
 
 footer {

@@ -1,7 +1,9 @@
 class BusesController < ApplicationController
   def index
-    @lines = Line.all
-    @stops = Stop.all
+    @lines = Line.first 4
+    @stops = Stop.where :property => "stop"
+    @stations = Stop.where :property => "station"
+    @spots = Stop.where :property => "spot"
   end
 
   def all_buses
