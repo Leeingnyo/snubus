@@ -5,4 +5,9 @@ class BusesControllerTest < ActionController::TestCase
     post :all_buses
     assert_not_nil response.body
   end
+
+  test "#index" do
+    get :index
+    assert_response :success
+  end
 end
