@@ -88,6 +88,7 @@ $(function (){
   $(".stops").click(function (){
     $("#selected-stop-id").val($(this).val());
     $("#selected-stop-name").html($(this).data("stop"));
+    $("#stop-controller").removeClass("spot");
     /* 위치 지정 필요 */
     $("#stop-controller").css("top",
       parseInt($("header").outerHeight(true)) + parseInt($(this).css("top"))
@@ -102,6 +103,7 @@ $(function (){
   $(".stations").click(function (){
     $("#selected-stop-id").val($(this).val());
     $("#selected-stop-name").html($(this).data("stop"));
+    $("#stop-controller").removeClass("spot");
     $("#stop-controller").addClass("station");
     $("#stop-controller").css("top", "auto");
     $("#stop-controller").css("left", 10);
