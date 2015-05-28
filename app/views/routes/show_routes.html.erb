@@ -14,7 +14,7 @@
     <p>예상 도착 시간 : <big><%= estimated_time.hour %>시 <%= estimated_time.min %>분</big></p>
   <% route.subroutes.each_with_index do |subroute, index| %>
     <div class="sub-result">
-      <h4><%= image_tag "busstop-small.png", :alt => "지도", :height => "20px" %> <span class="line-name"><%= subroute.line.name %></span></h4>
+      <h4><%= image_tag (subroute.line.name == "도보" ? "walk.png" : "busstop-small.png"), :alt => "지도", :height => "20px" %> <span class="line-name"><%= subroute.line.name %></span></h4>
       <p>from. <%= subroute.from.name %></p>
       <p>to. <%= subroute.to.name %></p>
       <p>대기시간: <big><%= min_and_sec(subroute.waiting) %></big></p>
