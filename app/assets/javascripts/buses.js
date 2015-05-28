@@ -68,7 +68,7 @@ $(function (){
     "32870": {"top": 59, "left": 44}, //서울대본부앞
 
     //Spot
-    "1000000": {"top": 50, "left": 51},
+    "1000000": {"top": 50, "left": 51}, //학생회관
   };
   $(".stops").each(function (){
     if (!stop_locations[$(this).val()]) {
@@ -89,7 +89,6 @@ $(function (){
     $("#selected-stop-id").val($(this).val());
     $("#selected-stop-name").html($(this).data("stop"));
     $("#stop-controller").removeClass("spot");
-    /* 위치 지정 필요 */
     $("#stop-controller").css("top",
       parseInt($("header").outerHeight(true)) + parseInt($(this).css("top"))
         + (parseInt($(this).css("top")) < 410 ? 60 : -100)
@@ -113,6 +112,10 @@ $(function (){
   $(".spots").click(function (){
     $("#selected-stop-id").val($(this).val());
     $("#selected-stop-name").html($(this).data("stop"));
+    $("#stop-controller").css("left",
+      Math.min(910,
+        Math.max(parseInt($("#map").css("margin-left")) + parseInt($(this).css("left")) - 90, 10) )
+    );
     $("#stop-controller").addClass("spot");
   });
   $("#show-stop-info").click(function (){
