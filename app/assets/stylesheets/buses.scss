@@ -58,11 +58,13 @@
 }
 .buses {
   position: absolute;
-  padding: 1px 10px 7px 10px;
+  width: 54px;
+  height: 27px;
   font-size: 12px;
   font-weight: bold;
   border-radius: 4px;
   color: red;
+  text-align: center;
 }
 .bus-right {
   background-image: url('bus-right.png');
