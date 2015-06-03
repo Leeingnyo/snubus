@@ -152,6 +152,11 @@ $(function (){
             $(bus).addClass("bus-left");
           else
             $(bus).addClass("bus-right");
+          if (bus_info.from === "10455" || bus_info.to === "10456"){
+            rate = 0.5;
+            $(bus).css("top", (5 / ((30 + 8 * rate) - 38) + 33) + "%");
+            $(bus).css("left", (30 + 8 * rate) + "%");
+          }
           $("#buses-wrapper").append(bus);
         })
       }
