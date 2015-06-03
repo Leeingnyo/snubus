@@ -38,6 +38,7 @@
   border-radius: 15px;
 }
 #map #stations-wrapper {
+  z-index: 2;
   position: fixed;
   bottom: 50px;
   left: 0px;
@@ -156,7 +157,9 @@ footer {
   background-color: gray;
 }
 #show-last-routes {
-  float: right;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
 }
 #show-last-routes button {
   height: 25px;
@@ -166,14 +169,14 @@ footer {
   cursor: pointer;
 }
 #show-routes {
-  float: right;
+  position: absolute;
+  right: 90px;
+  bottom: 20px;
   max-width: 500px;
   margin-right: 10px;
 }
-@media screen and (max-device-width: 600px) {
-  #show-routes input {
-    width: 50px;
-  }
+#show-routes input {
+  width: calc((100% - 150px) / 2);
 }
 #show-routes button {
   height: 25px;
