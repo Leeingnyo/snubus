@@ -98,7 +98,6 @@
 }
 #stop-controller .for-stop button {
   float: left;
-  max-width: 100px;
   width: calc(100% / 3);
   height: 60px;
   margin: 0;
@@ -112,7 +111,6 @@
 }
 #stop-controller .for-spot button, #stop-controller .for-station button {
   float: left;
-  max-width: 100px;
   width: calc(100% / 2);
   height: 60px;
   margin: 0;
@@ -127,12 +125,16 @@
 .station#stop-controller {
   position: fixed;
   left: 10px;
+  width: 200px;
 }
 .station#stop-controller .for-station {
   display: block;
 }
 .station#stop-controller .for-stop {
   display: none;
+}
+.spot#stop-controller {
+  width: 200px;
 }
 .spot#stop-controller label.for-spot {
   display: inline;
