@@ -88,6 +88,7 @@ $(function (){
   $(".stops").click(function (){
     $("#selected-stop-id").val($(this).val());
     $("#selected-stop-name").html($(this).data("stop"));
+    $("#stop-controller").removeClass("station");
     $("#stop-controller").removeClass("spot");
     $("#stop-controller").css("top",
       parseInt($("header").outerHeight(true)) + parseInt($(this).css("top"))
@@ -105,8 +106,9 @@ $(function (){
     $("#stop-controller").removeClass("spot");
     $("#stop-controller").addClass("station");
     $("#stop-controller").css("top", "auto");
-    $("#stop-controller").css("left", 10);
-    $("#stop-controller").css("bottom", $(this).index() * -30 + 70 + parseInt($("#stations-wrapper").css("bottom")));
+    $("#stop-controller").css("left", 120);
+    $("#stop-controller").css("bottom", 70);
+    //$("#stop-controller").css("bottom", $(this).index() * -30 + 130 + parseInt($("#stations-wrapper").css("bottom")));
     $("#stop-controller").show();
   });
   $(".spots").click(function (){
