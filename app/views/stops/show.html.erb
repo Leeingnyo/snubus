@@ -5,7 +5,7 @@
 <h2><%= @stop.name %></h2>
 <% @results.each do |result| %>
 <div class="result">
-  <h3><%= result[:line] %></h3>
+  <h3><%= image_tag "busstop-small.png", :alt => "지도", :height => "20px" %> <span class="line-name"><%= result[:line] %></span></h3>
   <p><%= result[:from] %> 에서 출발<br><%= "(%d개 전 정류장에서 출발)" % (result[:left] + 1) %></p>
   <p>남은 시간: <%= min_and_sec(result[:time]) %></p>
 </div>
