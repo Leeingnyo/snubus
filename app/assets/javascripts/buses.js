@@ -68,7 +68,7 @@ $(function (){
     "32870": {"top": 59, "left": 44}, //서울대본부앞
 
     //Spot
-    "1000000": {"top": 50, "left": 51},
+    "1000000": {"top": 50, "left": 51}, //학생회관
   };
   $(".stops").each(function (){
     if (!stop_locations[$(this).val()]) {
@@ -88,8 +88,8 @@ $(function (){
   $(".stops").click(function (){
     $("#selected-stop-id").val($(this).val());
     $("#selected-stop-name").html($(this).data("stop"));
+    $("#stop-controller").removeClass("station");
     $("#stop-controller").removeClass("spot");
-    /* 위치 지정 필요 */
     $("#stop-controller").css("top",
       parseInt($("header").outerHeight(true)) + parseInt($(this).css("top"))
         + (parseInt($(this).css("top")) < 410 ? 60 : -100)
@@ -106,13 +106,18 @@ $(function (){
     $("#stop-controller").removeClass("spot");
     $("#stop-controller").addClass("station");
     $("#stop-controller").css("top", "auto");
-    $("#stop-controller").css("left", 10);
-    $("#stop-controller").css("bottom", $(this).index() * -30 + 70 + parseInt($("#stations-wrapper").css("bottom")));
+    $("#stop-controller").css("left", 120);
+    $("#stop-controller").css("bottom", 70);
+    //$("#stop-controller").css("bottom", $(this).index() * -30 + 130 + parseInt($("#stations-wrapper").css("bottom")));
     $("#stop-controller").show();
   });
   $(".spots").click(function (){
     $("#selected-stop-id").val($(this).val());
     $("#selected-stop-name").html($(this).data("stop"));
+    $("#stop-controller").css("left",
+      Math.min(910,
+        Math.max(parseInt($("#map").css("margin-left")) + parseInt($(this).css("left")) - 90, 10) )
+    );
     $("#stop-controller").addClass("spot");
   });
   $("#show-stop-info").click(function (){
@@ -149,6 +154,11 @@ $(function (){
             $(bus).addClass("bus-left");
           else
             $(bus).addClass("bus-right");
+          if (bus_info.from === "10455" || bus_info.to === "10456"){
+            rate = 0.5;
+            $(bus).css("top", (5 / ((30 + 8 * rate) - 38) + 33) + "%");
+            $(bus).css("left", (30 + 8 * rate) + "%");
+          }
           $("#buses-wrapper").append(bus);
         })
       }

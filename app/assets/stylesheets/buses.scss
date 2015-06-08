@@ -38,6 +38,7 @@
   border-radius: 15px;
 }
 #map #stations-wrapper {
+  z-index: 2;
   position: fixed;
   bottom: 50px;
   left: 0px;
@@ -58,11 +59,14 @@
 }
 .buses {
   position: absolute;
-  padding: 1px 10px 7px 10px;
+  width: 54px;
+  height: 27px;
   font-size: 12px;
   font-weight: bold;
   border-radius: 4px;
   color: red;
+  text-align: center;
+  line-height: 23px;
 }
 .bus-right {
   background-image: url('bus-right.png');
@@ -77,14 +81,14 @@
 
 #stop-controller {
   position: absolute;
-  max-width: 270px;
+  width: 270px;
   height: 80px;
   border: 5px solid black;
   border-radius: 10px;
   background-color: gray;
   overflow: hidden;
 }
-#stop-controller .for-spot {
+#stop-controller .for-spot, #stop-controller .for-station {
   display: none;
 }
 #stop-controller #selected-stop {
@@ -94,7 +98,6 @@
 }
 #stop-controller .for-stop button {
   float: left;
-  max-width: 100px;
   width: calc(100% / 3);
   height: 60px;
   margin: 0;
@@ -106,9 +109,8 @@
   font-size: 13px;
   cursor: pointer;
 }
-#stop-controller .for-spot button {
+#stop-controller .for-spot button, #stop-controller .for-station button {
   float: left;
-  max-width: 100px;
   width: calc(100% / 2);
   height: 60px;
   margin: 0;
@@ -123,6 +125,16 @@
 .station#stop-controller {
   position: fixed;
   left: 10px;
+  width: 200px;
+}
+.station#stop-controller .for-station {
+  display: block;
+}
+.station#stop-controller .for-stop {
+  display: none;
+}
+.spot#stop-controller {
+  width: 200px;
 }
 .spot#stop-controller label.for-spot {
   display: inline;
@@ -147,7 +159,9 @@ footer {
   background-color: gray;
 }
 #show-last-routes {
-  float: right;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
 }
 #show-last-routes button {
   height: 25px;
@@ -157,14 +171,14 @@ footer {
   cursor: pointer;
 }
 #show-routes {
-  float: right;
+  position: absolute;
+  right: 90px;
+  bottom: 20px;
   max-width: 500px;
   margin-right: 10px;
 }
-@media screen and (max-device-width: 600px) {
-  #show-routes input {
-    width: 50px;
-  }
+#show-routes input {
+  width: calc((100% - 150px) / 2);
 }
 #show-routes button {
   height: 25px;

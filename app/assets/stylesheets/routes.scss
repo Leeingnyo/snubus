@@ -28,9 +28,18 @@ h4 {
 }
 .line-name {
   font-size: 20px;
+  vertical-align: 3px;
 }
 .sub-result > p {
   margin: 0.1em;
+}
+.joint {
+  width: 150px;
+  height: 15px;
+  background-image: url(line.png);
+  background-position: center;
+  background-size: 60px;
+  background-repeat: no-repeat;
 }
 
 #last-routes {
