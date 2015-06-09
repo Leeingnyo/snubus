@@ -6,6 +6,11 @@
   from <%= @from %> <br>
   to <%= @to %> <br>
 </h2>
+<% if @routes.length == 0 %>
+  <div class="result">
+    <p>검색 결과가 없습니다.</p>
+  </div>
+<% end %>
 <% @routes.each_with_index do |route, index| %>
   <div class="result">
     <h3>Route <%= index + 1 %></h3>
