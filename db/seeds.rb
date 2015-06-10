@@ -3019,3 +3019,20 @@ Edge.create({:line_id => "walk", :edge_index => 0, :from => "33750", :to => "100
 Edge.create({:line_id => "walk", :edge_index => 1, :from => "34552", :to => "1000000", :time => 70});
 Edge.create({:line_id => "walk", :edge_index => 0, :from => "1000000", :to => "33750", :time => 60});
 Edge.create({:line_id => "walk", :edge_index => 1, :from => "1000000", :to => "34552", :time => 50});
+
+["서울대학교", "서울대정문", "법대입구", "자연대.행정관입구", "농생대", "공대입구", "제2공학관" \
+    , "유전공학연구소.반도체공동연구소", "관악사삼거리", "국제대학원", "수의대입구.보건대학원앞", "경영대"].each do |name|
+  stops = Stop.where({:name => name})
+  stops.each do |first_stop|
+    stops.each do |second_stop|
+      if first_stop != second_stop
+        Edge.create({:line_id => "walk", :edge_index => 0, :from => first_stop.stop_id, :to => second_stop.stop_id, :time => 15})
+        Edge.create({:line_id => "walk", :edge_index => 0, :from => second_stop.stop_id, :to => first_stop.stop_id, :time => 15})
+      end
+    end
+  end
+end
+        Edge.create({:line_id => "walk", :edge_index => 0, :from => 34732, :to => 32870, :time => 25})
+        Edge.create({:line_id => "walk", :edge_index => 0, :from => 32870, :to => 34732, :time => 25})
+        Edge.create({:line_id => "walk", :edge_index => 0, :from => 10459, :to => 10452, :time => 30})
+        Edge.create({:line_id => "walk", :edge_index => 0, :from => 10452, :to => 10459, :time => 30})
