@@ -254,6 +254,11 @@ while i < sections.length
                  :to => sections[i][:stops][stop_index][:stop_id],
                  :time => 120})
 
+    edge = Edge.create({:line_id => "walk", :edge_index => 1,
+                        :from => sections[i][:stops][stop_index - 1][:stop_id],
+                        :to => sections[i][:stops][stop_index][:stop_id],
+                        :time => 180})
+
     edge_index += 1
     stop_index += 1
   end
@@ -3084,4 +3089,3 @@ Station.create(:name => "서울대입구역", :kind => 1, :arrival_time => 1390,
 Station.create(:name => "서울대입구역", :kind => 1, :arrival_time => 1396, :direction => "사당")
 Station.create(:name => "서울대입구역", :kind => 1, :arrival_time => 1404, :direction => "사당")
 Station.create(:name => "서울대입구역", :kind => 1, :arrival_time => 1421, :direction => "사당")
-
