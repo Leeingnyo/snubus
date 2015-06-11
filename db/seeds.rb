@@ -11,6 +11,7 @@ Line.create({:name => "관악02", :line_id => "3920400"});
 Line.create({:name => "5511", :line_id => "4551100"});
 Line.create({:name => "5513", :line_id => "4551300"});
 Line.create({:name => "5516", :line_id => "4551600"});
+Line.create({:name => "도보", :line_id => "walk"});
 
 sections = Array.new
 sections.push({:line => "3920400", :stops => Array.new})
@@ -259,6 +260,77 @@ while i < sections.length
 
   i += 1
 end
+
+# 도보
+Stop.create({:name => "학생회관", :stop_id => "1000000",
+             :property => "spot"});
+Stop.create({:name => "공대신양학술정보관", :stop_id => "1000001",
+             :property => "spot"});
+Stop.create({:name => "인문대신양학술정보관", :stop_id => "1000002",
+             :property => "spot"});
+Stop.create({:name => "멀티미디어강의동", :stop_id => "1000003",
+             :property => "spot"});
+
+# Edges related to 도보 stops.
+# 학생회관
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "1000000",
+             :to => "33750", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "1000000",
+             :to => "34552", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "1000000",
+             :to => "32870", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "1000000",
+             :to => "34732", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "33750",
+             :to => "1000000", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "34552",
+             :to => "1000000", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "32870",
+             :to => "1000000", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "34732",
+             :to => "1000000", :time => 60});
+
+# 공대신양학술정보관
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "1000001",
+             :to => "34733", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "1000001",
+             :to => "33748", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "1000001",
+             :to => "33351", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "33351",
+             :to => "1000001", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "34733",
+             :to => "1000001", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "33748",
+             :to => "1000001", :time => 60});
+
+# 인문대신양학술정보관
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "1000002",
+             :to => "10560", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "1000002",
+             :to => "10135", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "10135",
+             :to => "1000002", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "10560",
+             :to => "1000002", :time => 60});
+
+# 멀티미디어강의동
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "1000003",
+             :to => "33753", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "1000003",
+             :to => "33707", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "1000003",
+             :to => "33744", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "1000003",
+             :to => "33709", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "33709",
+             :to => "1000003", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "33744",
+             :to => "1000003", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "33707",
+             :to => "1000003", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "33753",
+             :to => "1000003", :time => 60});
 
 # Create Stations.
 Stop.create({:name => "사당방면", :stop_id => "10", :property => "station"})
@@ -3013,9 +3085,3 @@ Station.create(:name => "서울대입구역", :kind => 1, :arrival_time => 1396,
 Station.create(:name => "서울대입구역", :kind => 1, :arrival_time => 1404, :direction => "사당")
 Station.create(:name => "서울대입구역", :kind => 1, :arrival_time => 1421, :direction => "사당")
 
-Line.create({:name => "도보", :line_id => "walk"});
-Stop.create({:name => "학생회관", :stop_id => "1000000", :property => "spot"});
-Edge.create({:line_id => "walk", :edge_index => 0, :from => "33750", :to => "1000000", :time => 80});
-Edge.create({:line_id => "walk", :edge_index => 1, :from => "34552", :to => "1000000", :time => 70});
-Edge.create({:line_id => "walk", :edge_index => 0, :from => "1000000", :to => "33750", :time => 60});
-Edge.create({:line_id => "walk", :edge_index => 1, :from => "1000000", :to => "34552", :time => 50});
