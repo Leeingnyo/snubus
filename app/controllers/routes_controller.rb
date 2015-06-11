@@ -136,7 +136,7 @@ class RoutesController < ApplicationController
   end
   def find_subroute(line, from_stop, to_stop, time_start)
     time = Edge.get_duration(line, from_stop.stop_id, to_stop.stop_id)
-    if time > -1 && time < 1200
+    if time > -1 && time < 1500
       waiting_time = calculate_waiting_time(line, from_stop.stop_id, time_start)
       return SubRoute.new(
         from_stop,
