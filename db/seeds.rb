@@ -47,6 +47,8 @@ stops.push(Stop.create({:name => "유전공학연구소.반도체공동연구소
 stops.push(Stop.create({:name => "교수회관입구", :stop_id => "10459", :property => "stop"}));
 stops.push(Stop.create({:name => "노천강당", :stop_id => "21916", :property => "stop"}));
 stops.push(Stop.create({:name => "기숙사삼거리", :stop_id => "10135", :property => "stop"}));
+stops.push(Stop.create({:name => "기숙사구관", :stop_id => "10117", :property => "stop"}));
+stops.push(Stop.create({:name => "기숙사신관", :stop_id => "12709", :property => "stop"}));
 stops.push(Stop.create({:name => "BK국제관", :stop_id => "10055", :property => "stop"}));
 stops.push(Stop.create({:name => "가족생활동", :stop_id => "10034", :property => "stop"}));
 stops.push(Stop.create({:name => "호암교수회관", :stop_id => "12691", :property => "stop"}));
