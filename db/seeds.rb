@@ -34,6 +34,7 @@ stops.push(Stop.create({:name => "서울대후문.연구공원", :stop_id => "10
 stops.push(Stop.create({:name => "기숙사신관", :stop_id => "10548", :property => "stop"}));
 stops.push(Stop.create({:name => "기숙사구관", :stop_id => "10556", :property => "stop"}));
 stops.push(Stop.create({:name => "기숙사삼거리", :stop_id => "10560", :property => "stop"}));
+stops.push(Stop.create({:name => "노천강당", :stop_id => "21915", :property => "stop"}));
 stops.push(Stop.create({:name => "공동기기원", :stop_id => "10452", :property => "stop"}));
 stops.push(Stop.create({:name => "유전공학연구소.반도체공동연구소", :stop_id => "33356", :property => "stop"}));
 stops.push(Stop.create({:name => "에너지자원연구소", :stop_id => "34733", :property => "stop"}));
@@ -44,6 +45,7 @@ stops.push(Stop.create({:name => "제2공학관", :stop_id => "33712", :property
 stops.push(Stop.create({:name => "제1공학관", :stop_id => "33711", :property => "stop"}));
 stops.push(Stop.create({:name => "유전공학연구소.반도체공동연구소", :stop_id => "33355", :property => "stop"}));
 stops.push(Stop.create({:name => "교수회관입구", :stop_id => "10459", :property => "stop"}));
+stops.push(Stop.create({:name => "노천강당", :stop_id => "21916", :property => "stop"}));
 stops.push(Stop.create({:name => "기숙사삼거리", :stop_id => "10135", :property => "stop"}));
 stops.push(Stop.create({:name => "BK국제관", :stop_id => "10055", :property => "stop"}));
 stops.push(Stop.create({:name => "가족생활동", :stop_id => "10034", :property => "stop"}));
