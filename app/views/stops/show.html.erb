@@ -3,6 +3,11 @@
 <% end %>
 
 <h2><%= @stop.name %></h2>
+<% if @results.length == 0 %>
+<div class="result">
+  <p>버스 결과가 없습니다</p>
+</div>
+<% end %>
 <% @results.each do |result| %>
 <div class="result">
   <h3><%= image_tag "busstop-small.png", :alt => "지도", :height => "20px" %> <span class="line-name"><%= result[:line] %></span></h3>
