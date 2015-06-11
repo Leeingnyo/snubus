@@ -13,6 +13,10 @@ class RoutesController < ApplicationController
 
     @from = departure.name
     @to = destination.name
+    if @from == @to
+      redirect_to :root
+      return
+    end
     @routes = Array.new
     from_stop_list = Array.new
     to_stop_list = Array.new
