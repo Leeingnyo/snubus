@@ -4,6 +4,9 @@ class StopsController < ApplicationController
     @stop = Stop.find_by(:stop_id => params[:id])
     if @stop
       Edge.where(:to => @stop.stop_id).find_each do |target_edge|
+        if target_edge.line_id == "walk"
+	  next
+	end
         bus = Bus.coming_buses(target_edge).first
         if(bus.nil?)
           next
