@@ -13,6 +13,10 @@ class RoutesController < ApplicationController
 
     @from = departure.name
     @to = destination.name
+    if @from == @to
+      redirect_to :root
+      return
+    end
     @routes = Array.new
     from_stop_list = Array.new
     to_stop_list = Array.new
@@ -84,7 +88,7 @@ class RoutesController < ApplicationController
           if sr
             stops = Edge.get_stop_list(from_edge.line_id, from_stop.stop_id, to_stop.stop_id)
             r = Route.new(from_stop, to_stop, [sr], stops, sr.moving + sr.waiting)
-            push_route_without_duplicated(routes, r)
+	    routes.push(r)
           end
         else
           one_change_routes = []
