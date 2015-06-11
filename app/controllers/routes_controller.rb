@@ -88,7 +88,7 @@ class RoutesController < ApplicationController
           if sr
             stops = Edge.get_stop_list(from_edge.line_id, from_stop.stop_id, to_stop.stop_id)
             r = Route.new(from_stop, to_stop, [sr], stops, sr.moving + sr.waiting)
-            push_route_without_duplicated(routes, r)
+	    routes.push(r)
           end
         else
           one_change_routes = []
