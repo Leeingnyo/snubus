@@ -114,7 +114,9 @@ class RoutesController < ApplicationController
     routes = []
     return routes if from_stop == to_stop
     Edge.where(:from => from_stop.stop_id).each do |from_edge|
+      next if from_edge.line_id == "walk"
       Edge.where(:to => to_stop.stop_id).each do |to_edge|
+        next if to_edge.line_id == "walk"
         if from_edge.line_id == to_edge.line_id
           sr = find_subroute(from_edge.line_id, from_stop, to_stop, time_start)
           if sr
