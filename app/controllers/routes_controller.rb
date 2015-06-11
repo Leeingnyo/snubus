@@ -6,7 +6,7 @@ class RoutesController < ApplicationController
     end
     departure = Stop.find_by(:stop_id => params[:departure])
     destination = Stop.find_by(:stop_id => params[:destination])
-    if departure == nil || destination == nil || departure == destination
+    if departure == nil || destination == nil
       redirect_to :root
       return
     end
