@@ -14,6 +14,9 @@ class RoutesController < ApplicationController
     @from = departure.name
     @to = destination.name
     @routes = Array.new
+
+    sr = find_walk_subroute(departure, destination)
+    @routes.push(Route.new(sr.from, sr.to, [sr], [], sr.moving)) if sr
     from_stop_list = Array.new
     to_stop_list = Array.new
     if departure.property == "spot"
@@ -72,6 +75,30 @@ class RoutesController < ApplicationController
         route.subway_to_bongcheon = Station.where(:name => station_name, :direction => "봉천", :kind => daytype).where("arrival_time > #{time}").order("arrival_time asc").first
       end
     end
+  end
+
+  def find_walk_subroute(from_stop, to_stop) 
+    #TODO with dijkstra
+    walk_line = Line.find_by(:line_id => "walk")
+    subroute_queue = Array.new 
+    checked_stop = Hash.new(false)
+    subroute_queue.push(SubRoute.new(from_stop, from_stop, walk_line, 0, 0))
+    until subroute_queue.empty?
+      iterroute = subroute_queue.shift
+      next if checked_stop[iterroute.to]
+      checked_stop[iterroute.to] = true;
+      return iterroute if iterroute.to.stop_id == to_stop.stop_id
+      Edge.where(:line_id => "walk", :from => iterroute.to.stop_id).each do |edge|
+        time = iterroute.moving + edge.time
+        i = subroute_queue.index{ |x| x.moving > time }
+        if i
+          subroute_queue.insert(i, SubRoute.new(from_stop, Stop.find_by(:stop_id => edge.to), walk_line, iterroute.moving + edge.time, 0))
+        else
+          subroute_queue.push(SubRoute.new(from_stop, Stop.find_by(:stop_id => edge.to), walk_line, iterroute.moving + edge.time, 0))
+        end
+      end
+    end
+    return nil
   end
 
   def find_route(from_stop, to_stop, time_start)
