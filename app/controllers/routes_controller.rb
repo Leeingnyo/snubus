@@ -24,15 +24,18 @@ class RoutesController < ApplicationController
     from_stop_list = Array.new
     to_stop_list = Array.new
     if departure.property == "spot"
-      Edge.where(:line_id => "walk", :from => departure.stop_id).each do |edge|
+      Edge.where(:line_id => "walk", :from => departure.stop_id, :edge_index => -1).each do |edge|
         from_stop_list.push(Stop.find_by(:stop_id => edge.to))
       end
     else
       from_stop_list.push(departure)
+      Edge.where(:line_id => "walk", :from => destination.stop_id, :edge_index => 0).each do |edge|
+        from_stop_list.push(Stop.find_by(:stop_id => edge.to))
+      end
     end
 
     if destination.property == "spot"
-      Edge.where(:line_id => "walk", :to => destination.stop_id).each do |edge|
+      Edge.where(:line_id => "walk", :to => destination.stop_id, :edge_index => -1).each do |edge|
         to_stop_list.push(Stop.find_by(:stop_id => edge.from))
       end
     elsif destination.property == "station"
@@ -40,6 +43,9 @@ class RoutesController < ApplicationController
       to_stop_list.push(Stop.find_by(:stop_id => "10422"))
     else
       to_stop_list.push(destination)
+      Edge.where(:line_id => "walk", :to => destination.stop_id, :edge_index => 0).each do |edge|
+        to_stop_list.push(Stop.find_by(:stop_id => edge.from))
+      end
     end
 
     from_stop_list.each do |from_stop|
@@ -82,7 +88,6 @@ class RoutesController < ApplicationController
   end
 
   def find_walk_subroute(from_stop, to_stop) 
-    #TODO with dijkstra
     walk_line = Line.find_by(:line_id => "walk")
     subroute_queue = Array.new 
     checked_stop = Hash.new(false)
