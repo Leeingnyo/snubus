@@ -1,4 +1,6 @@
 class Edge < ActiveRecord::Base
+  validates_uniqueness_of :to, :scope => [:from, :edge_index, :line_id]
+
   def self.get_duration(line, start_stop, end_stop)
     return 0 if start_stop == end_stop
     time = 0
