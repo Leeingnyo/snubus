@@ -5,11 +5,9 @@
 h2 {
   margin: 10px;
   padding: 10px;
-  border: 2px solid black;
-  border-radius: 5px;
   text-align: center;
-  background-color: black;
-  color: white;
+  background-color: #D0D0D0;
+  color: black;
 }
 
 h3 {
@@ -36,9 +34,9 @@ h4 {
 .joint {
   width: 150px;
   height: 15px;
-  background-image: url(line.png);
+  background-image: url(arrow.png);
   background-position: center;
-  background-size: 60px;
+  background-size: 20px;
   background-repeat: no-repeat;
 }
 
