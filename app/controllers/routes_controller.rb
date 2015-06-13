@@ -51,19 +51,19 @@ class RoutesController < ApplicationController
     from_stop_list.each do |from_stop|
       to_stop_list.each do |to_stop|
         temp_routes = find_route(from_stop, to_stop, 0)
-        if departure != from_stop
+        if departure.stop_id != from_stop.stop_id
+          edge = Edge.find_by(:line_id => "walk", :from => departure.stop_id, :to => from_stop.stop_id)
+          subroute = SubRoute.new(departure, from_stop, Line.find_by(:line_id => "walk"), edge.time, 0)
           temp_routes.each do |route|
-            edge = Edge.find_by(:line_id => "walk", :from => departure.stop_id, :to => from_stop.stop_id)
-            subroute = SubRoute.new(departure, from_stop, Line.find_by(:line_id => "walk"), edge.time, 0)
             route.subroutes.unshift(subroute)
             route.from = departure
             route.time += edge.time
           end
         end
-        if destination != to_stop
+        if destination.stop_id != to_stop.stop_id
+          edge = Edge.find_by(:line_id => "walk", :from => to_stop.stop_id, :to => destination.stop_id)
+          subroute = SubRoute.new(to_stop, destination, Line.find_by(:line_id => "walk"), edge.time, 0)
           temp_routes.each do |route|
-            edge = Edge.find_by(:line_id => "walk", :from => to_stop.stop_id, :to => destination.stop_id)
-            subroute = SubRoute.new(to_stop, destination, Line.find_by(:line_id => "walk"), edge.time, 0)
             route.subroutes.push(subroute)
             route.to = destination
             route.time += edge.time
