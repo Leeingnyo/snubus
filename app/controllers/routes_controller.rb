@@ -60,7 +60,7 @@ class RoutesController < ApplicationController
             route.time += edge.time
           end
         end
-        if destination.stop_id != to_stop.stop_id and destinaion.property != "station"
+        if destination.stop_id != to_stop.stop_id and destination.property != "station"
           edge = Edge.find_by(:line_id => "walk", :from => to_stop.stop_id, :to => destination.stop_id)
           subroute = SubRoute.new(to_stop, destination, Line.find_by(:line_id => "walk"), edge.time, 0)
           temp_routes.each do |route|
