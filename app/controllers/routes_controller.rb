@@ -169,8 +169,8 @@ class RoutesController < ApplicationController
 
   def remove_too_long_routes(routes)
     if routes
-      routes.reverse!
       times = Array.new
+      targets = Array.new
       routes.each do |route|
         time = 0
         route.subroutes.each do |subroute|
@@ -178,15 +178,17 @@ class RoutesController < ApplicationController
 	end
 	times.push(time)
       end
-      times.reverse.each_index do |x|
-        ratio = times[x] / times.last
-	differ = times[x] - times.last
+      routes.each_index do |x|
+        ratio = times.at(x) / times.first
+	differ = times.at(x) - times.first
 	if ratio > 2 && differ > 1200
-	  routes.delete_at(x)
+	  targets.push(x)
 	end
       end
+      targets.reverse_each do |x|
+        routes.delete_at(x)
+      end
     end
-    routes.reverse!
   end
 end
 
