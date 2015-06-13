@@ -247,17 +247,22 @@ while i < sections.length
   end
 
   stop_index = 1
-  while stop_index < sections[i][:stops].length
-    edge = Edge.create({:line_id => sections[i][:line],
-                 :edge_index => edge_index,
-                 :from => sections[i][:stops][stop_index - 1][:stop_id],
-                 :to => sections[i][:stops][stop_index][:stop_id],
-                 :time => 120})
+  bus_edge_duration = 120
+  walk_edge_duration = 180
 
-    edge = Edge.create({:line_id => "walk", :edge_index => 1,
-                        :from => sections[i][:stops][stop_index - 1][:stop_id],
-                        :to => sections[i][:stops][stop_index][:stop_id],
-                        :time => 180})
+  while stop_index < sections[i][:stops].length
+    from_id = sections[i][:stops][stop_index - 1][:stop_id]
+    to_id = sections[i][:stops][stop_index][:stop_id]
+
+    # Edge by bus.
+    Edge.create({:line_id => sections[i][:line], :edge_index => edge_index,
+                 :from => from_id, :to => to_id, :time => bus_edge_duration})
+
+    # Edges by walk.
+    Edge.create({:line_id => "walk", :edge_index => 1, :from => from_id,
+                 :to => to_id, :time => walk_edge_duration})
+    Edge.create({:line_id => "walk", :edge_index => 1, :from => to_id,
+                 :to => from_id, :time => walk_edge_duration})
 
     edge_index += 1
     stop_index += 1
