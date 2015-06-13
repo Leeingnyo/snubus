@@ -60,6 +60,7 @@ class RoutesController < ApplicationController
       end
     end
     @routes.sort! { |a, b| a.time <=> b.time}
+    remove_too_long_routes(@routes)
     @routes.each do |route|
       if route.to.stop_id == "3719" || route.to.stop_id == "10422"
         now = Time.now
@@ -136,7 +137,7 @@ class RoutesController < ApplicationController
   end
   def find_subroute(line, from_stop, to_stop, time_start)
     time = Edge.get_duration(line, from_stop.stop_id, to_stop.stop_id)
-    if time > -1 && time < 1500
+    if time > -1 && time < 3000
       waiting_time = calculate_waiting_time(line, from_stop.stop_id, time_start)
       return SubRoute.new(
         from_stop,
@@ -163,6 +164,26 @@ class RoutesController < ApplicationController
       return Edge.get_duration(line, first_edge.from, stop)
     else
       return 0
+    end
+  end
+
+  def remove_too_long_routes(routes)
+    if routes
+      times = Array.new
+      routes.each do |route|
+        time = 0
+        route.subroutes.each do |subroute|
+	  time += subroute.moving
+	end
+	times.push(time)
+      end
+      times.each_index do |x|
+        ratio = times[x] / times[0]
+	differ = times[x] - times[0]
+	if ratio > 2 && differ > 1200
+	  routes.delete_at(x)
+	end
+      end
     end
   end
 end
