@@ -76,6 +76,9 @@ $(function (){
 
     //Spot
     "1000000": {"top": 50, "left": 51, "direction": 0}, //학생회관
+    "1000001": {"top": 28, "left": 64, "direction": 0}, //공대신양학술정보관
+    "1000002": {"top": 38, "left": 41, "direction": 0}, //인문대신양학술정보관
+    "1000003": {"top": 60, "left": 30, "direction": 0}, //멀티미디어강의동
   };
   $(".stops").each(function (){
     if (!stop_locations[$(this).val()]) {

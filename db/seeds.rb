@@ -333,6 +333,14 @@ Edge.create({:line_id => "walk", :edge_index => -1, :from => "1000003",
              :to => "33744", :time => 60});
 Edge.create({:line_id => "walk", :edge_index => -1, :from => "1000003",
              :to => "33709", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "1000003",
+             :to => "33353", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "1000003",
+             :to => "34043", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "34043",
+             :to => "1000003", :time => 60});
+Edge.create({:line_id => "walk", :edge_index => -1, :from => "33353",
+             :to => "1000003", :time => 60});
 Edge.create({:line_id => "walk", :edge_index => -1, :from => "33709",
              :to => "1000003", :time => 60});
 Edge.create({:line_id => "walk", :edge_index => -1, :from => "33744",
