@@ -122,7 +122,7 @@ class RoutesController < ApplicationController
           if sr
             stops = Edge.get_stop_list(from_edge.line_id, from_stop.stop_id, to_stop.stop_id)
             r = Route.new(from_stop, to_stop, [sr], stops, sr.moving + sr.waiting)
-	    routes.push(r)
+            push_route_without_duplicated(routes, r)
           end
         else
           one_change_routes = []
@@ -163,7 +163,7 @@ class RoutesController < ApplicationController
     i = routes.index{|x| (x.stops <=> route.stops) == 0}
     if i
       if routes[i].time > route.time
-        routes.delete_at(i)
+        routes.delete_at(i) if routes[i].subroutes.length > 1
         routes.push(route)
       end
     else
